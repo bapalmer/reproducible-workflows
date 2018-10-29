@@ -1,0 +1,145 @@
+---
+title: "1-day course - Introduction"
+author: "Brendan Palmer"
+date: "30th October 2018"
+output:
+  word_document: default
+  html_document: default
+---
+
+That first bit was a YAML header (optional). You can control "whole document"" settings by tweaking the YAML header. With YAML, indentation is important, so just keep it simple first as you get up and running. 
+
+Oh, and this bit right here is just plain text as you would see in any text editor. This next bit is how we include our code within the document.  It starts with three back-ticks, a pair of curly braces, "r" and then ends with three back ticks. The code lies within.
+
+Example 1:
+
+```{r}
+# This can be written just like any other R script
+
+# You can create new vectors
+x <- 1:100
+y <- summary(x)
+y
+```
+
+Example 2:
+In that first code chunk, we just did a simple operation. If we were to present this to a colleague as part of our presentation/analysis, we can remove the code and display only the output as follows......
+
+```{r, echo=FALSE}
+x <- 1:100
+y <- summary(x)
+y
+```
+
+Example 3:
+Of course, maybe we just want to report discrete values.
+
+When we're writing, little elements of R code can be incorporated into the document with back ticks.
+
+The mean of a sequence of numbers from 1 to 100 is `r y["Mean"]` or `r y[4]` depending on how you like writing the background code. 
+
+The benefit of all of this is that the numerical information in the document is coming directly from the data, thereby eliminating errors arising from copy/paste. Even more importantly, if a value is questioned, it can be readily checked, verified or corrected.
+
+# Formatting
+## Headers
+That hash symbol (\#) indicates the header levels. Two hash symbols together \#\# give us our second header level. Because it has a specific purpose, I had to escap it with the backslash (\\).
+
+# This is header level 1
+## This is header level 2
+### This is header level 3 and so on
+
+## Text formatting
+*This text is in italics.*
+_And so is this text._
+
+**This text is in bold.**
+__And so is this text.__
+
+~~This text is rendered with strikethrough.~~
+
+`Code is surrounded by the back ticks` which changes its appearence in the finished document. This can be useful in the finished document. Today for example we have used the `gather()` and `separate()` function from the `tidyr` package.
+
+FYI, This is a paragraph.
+
+Now I'm in paragraph 2.
+I'm still in paragraph 2 too!
+You'll get what I mean once you look at the 'knitted' document
+
+I'm in paragraph three now!
+
+## Lists
+### Bulleted list item
+
+* Item 1
+
+* Item 2
+    * 2a
+    * 2b
+
+or
+
++ Item
++ Anotehr item
+
+or
+
+- Item
+- Another item
+
+### Numbered list items
+1. Item one
+2. Item two
+3. Item three
+
+## Links
+<b.palmer@ucc.ie>
+
+<http://tidyverse.org>
+
+[Click me to go to tidyverse central!](http://tidyverse.org/ "Link to the tidyverse webpage")
+
+[Can place links to locations on your own system](/Users/bpalmer/Pictures/).
+
+## Code chunks
+These can be added by clicking on the green insert button or  by typing....
+```{r}
+
+```
+
+As you can see if you click on the green button, there are a number of languages supported within Rmarkdown
+
+The chucks can be given names, but two chunks can't have the same name. This has three advantages.
+1. You can more easliy navigate to specific code chunks
+1. Graphics produced by the chunks will have useful names
+1. You can set up networks of cached chunks to avoid re-running expensive computation on every run. 
+
+#### Chunk options
+* `eval = FALSE` - prevents the code from being evaluated
+* `include = FALSE` - runs the code but doesn't show it in the final document
+* `echo = FALSE` - prevents the code but not the results from appearing
+* `message = FALSE` - prevents messages from appearing in the finished file
+* `results = "hide"` - hides the printed output
+* `error = TRUE` - causes the render to continue even if the code returns an error 
+
+## Tables
+By default, RMarkdown prints data tables as you'd see them in the console
+
+```{r Example table}
+mtcars[1:5, 1:10]
+```
+
+
+You can also get them displayed with additional formatting
+
+```{r Example formatted table, echo = FALSE}
+knitr::kable(mtcars[1:5, ],
+             caption = "A nicer version of the same table")
+```
+
+## Caching 
+Normally each knit of a document starts from a  clean slate. This great for reproducibility, but painful if some computations take a long time to run. You can avoid this by setting `cached = TRUE`. This will save the output of the chunk to a named file on disk. On susequent runs knitr ill check to see if the code has changed, and if it hasn't, will reuse the cached results.
+
+## Bibliographies and citations
+Pandoc can automatically generate citations and a bibliography ina number of styles.
+
+This is just an FYI. We won't be able to cover it here.

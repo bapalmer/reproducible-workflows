@@ -1,0 +1,1234 @@
+---
+title: "Body composition review"
+author: "Darren L Dahly"
+date: ""
+output:
+  word_document:  
+    reference_docx: "style.1.docx"
+---
+
+```{r setup, include = FALSE}
+
+  knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, 
+                        fig.width  = 6 * 1.67, fig.height = 6)
+
+  load("bc_data.Rdata")
+  library(tidyverse)
+  library(viridis)
+
+```
+
+
+
+```{r flowchart}
+
+  start <- 8303
+
+# Exclude has all the papers that were excluded by Hazel or Darren
+  excluded <- nrow(exclude) 
+# Raw has all the papers that we started data extraction for, including redundants and papers 
+# without converted FM, %FM, or FFM.   
+  raw_n <- length(unique(raw$pmid)) 
+# Exclude + raw then includes everything we screened  
+  screen <-  excluded + raw_n
+# Raw2 has the redudants removed.   
+  raw2_n <- length(unique(raw2$pmid)) 
+  duplicated <- raw_n - raw2_n
+# Review then has the other exclusions removed (all NoBC because they only report
+# things like TBW or ATV)  
+  review_n <- length(unique(review$pmid)) # 129
+  extra_exclude <- raw2_n - review_n
+  review_samples <- nrow(distinct(review, pmid, sample)) # 246
+  meta_exclude <- table(distinct(review, pmid, meta_exclusion)$meta_exclusion)
+# table(exclude$reason)
+# MA has these removed for the meta analysis
+  ma_n <- length(unique(ma$pmid))
+  ma_samples <- nrow(distinct(ma, pmid, sample))
+  
+  fig <- 1
+  sup_fig <- 1
+  
+```
+
+# Results 
+
+## Search results
+
+The search identified `r start` non-duplicated papers (Figure 1) which were then reviewed by a single author to remove obviously irrelevant reports. Of the `r screen` remaining papers, `r excluded + extra_exclude` were excluded based the screening criteria (Supplemental Table X); while `r duplicated` were excluded for only reporting data that overlapped with other, included papers (please see Appendix 3 for a summary of our decisions on which overlapping papers to keep and which to exclude). This left `r review_n` papers, which included `r review_samples` total samples, for the review.
+
+```{r methods}
+
+  methods <- unique(review[c("pub_year","pmid","method")])
+
+  method_table <- table(distinct(review, pmid, method)$method)
+
+# We have wt and ht now, so need those out. 
+
+# table(filter(review, is.na(method))$measure)
+
+  methods <- filter(methods, !is.na(method)) %>%
+    arrange(method, pub_year)
+
+  methods$count <- 1
+  
+  methods <- group_by(methods, method) %>%
+    mutate(cumsum = cumsum(count), max = max(cumsum)) 
+
+  methods$total <- cumsum(methods$count)
+  
+  methods$method <- reorder(factor(methods$method), methods$max)
+
+# table(methods$method)
+
+```
+
+
+## Characteristics of studies included in the review
+
+### Measurement techniques
+
+The most commonly used methods for measuring body composition were stable isotopes (`r round(method_table[5]/sum(method_table), 3) * 100`%), DXA (`r round(method_table[3]/sum(method_table), 3) * 100`%), and ADP (`r round(method_table[2]/sum(method_table), 3) * 100`%) (Figure 2). This is despite ADP being the more recently developed technology. MRI has been used at a steady rate since the early 2000s, while new studies with TOBEC largely disappeared at the same time. 
+
+#### Figure `r fig`.`r fig <- fig + 1` Reference methods used to measure body composition, over time (`r min(methods$pub_year)` to `r max(methods$pub_year)`)
+```{r methods_plot}
+# Plot the cummulative counts of methods used, by year.
+
+  ggplot(methods,aes(x = pub_year, color = method, y = total, 
+                     group = method)) +
+
+    stat_bin(data = filter(methods, method == "DEXA"),
+             aes(y = cumsum(..count..)),
+             geom = "step", size = 3, alpha = .3) +
+    stat_bin(data = filter(methods, method == "ADP"),
+             aes(y = cumsum(..count..)),
+             geom = "step", size = 3, alpha = .3) +
+    stat_bin(data = filter(methods, method == "SI"),
+             aes(y = cumsum(..count..)),
+             geom = "step", size = 3, alpha = .3) +
+    stat_bin(data = filter(methods, method == "TOBEC"),
+             aes(y = cumsum(..count..)),
+             geom = "step", size = 3, alpha = .3) +
+    stat_bin(data = filter(methods, method == "MRI"),
+             aes(y = cumsum(..count..)),
+             geom = "step", size = 3, alpha = .3) +
+    stat_bin(data = filter(methods, method == "4C"),
+             aes(y = cumsum(..count..)),
+             geom = "step", size = 3, alpha = .3) +
+    stat_bin(data = filter(methods, method == "WBC"),
+             aes(y = cumsum(..count..)),
+             geom = "step", size = 3, alpha = .3) +
+    stat_bin(data = filter(methods, method == "DEXA"),
+             aes(y = cumsum(..count..)),
+             geom = "step", size = 1) +
+    stat_bin(data = filter(methods, method == "ADP"),
+             aes(y = cumsum(..count..)),
+             geom = "step", size = 1) +
+    stat_bin(data = filter(methods, method == "SI"),
+             aes(y = cumsum(..count..)),
+             geom = "step", size = 1) +
+    stat_bin(data = filter(methods, method == "TOBEC"),
+             aes(y = cumsum(..count..)),
+             geom = "step", size = 1) +
+    stat_bin(data = filter(methods, method == "MRI"),
+             aes(y = cumsum(..count..)),
+             geom = "step", size = 1) +
+    stat_bin(data = filter(methods, method == "4C"),
+             aes(y = cumsum(..count..)),
+             geom = "step", size = 1) +
+    stat_bin(data = filter(methods, method == "WBC"),
+             aes(y = cumsum(..count..)),
+             geom = "step", size = 1) +
+
+  coord_cartesian(xlim = range(methods$pub_year))+
+# scale_y_continuous(breaks = c(0, 5, 10, 15, 20, 25, 30)) +
+  ylab("Cumulative Number of Publications") +
+  xlab("Year of Publication") +
+
+  scale_color_viridis(name = "", discrete = TRUE,
+                     breaks = c("ADP", "DEXA", "SI", "TOBEC", "MRI",
+                                "WBC", "4C"),
+                     labels = c(paste0("ADP (",   method_table[2], ")"), 
+                                paste0("DEXA (",  method_table[3], ")"), 
+                                paste0("SI (",    method_table[5], ")"),
+                                paste0("TOBEC (", method_table[6], ")"), 
+                                paste0("MRI (",   method_table[4], ")"), 
+                                paste0("WBC (",   method_table[7], ")"),
+                                paste0("4C (",    method_table[1], ")"))) 
+
+  ggsave("plots/method.png", width = 13, height = 8, units = "cm", scale = 1.5)
+
+```
+
+```{r country}
+
+  country  <- unique(review[c("pmid","country")])
+
+# Two papers were Germany/Spain and Germany/Switzerland, and these have been 
+# treated as both. 
+
+  a <- data.frame(pmid = c(22310472, 16912899),
+                  country = c("Spain", "Switzerland"))
+
+  country <- rbind(a, country)
+  rm(a)
+  
+  country$country <- as.character(country$country)
+
+  country$country[country$country == "Germany and Spain"]       <- "Germany"
+  country$country[country$country == "Germany and Switzerland"] <- "Germany"
+
+  country$count <- 1
+  
+  country <- group_by(country, country) %>% 
+    arrange(country) %>%
+    mutate(cumsum = cumsum(count), 
+           max = max(cumsum)) %>%
+    ungroup() %>%
+    filter(!is.na(country))
+
+  country <- country[order(country$max, decreasing = T), ] 
+
+  ctry_table <- table(country$country)
+
+```
+
+### Location
+
+The United States was the most common study site (`r round(max(ctry_table)/sum(ctry_table), 3) * 100`% of studies), with most of the remaining sites located in Europe. Notably, only 9 studies took place in lower or middle-income countries. 
+
+#### Figure `r fig`.`r fig <- fig + 1` Countries where studies of infant body composition take place
+```{r country_plot}
+
+  mapColor <- viridis(8, begin = 0)
+  
+# range(country$pub_year) # 1977 - 2016
+  
+  library(rworldmap)
+
+  map <- joinCountryData2Map(country,
+                             joinCode = "NAME",
+                             nameJoinColumn = "country",
+                             nameCountryColumn = "country",
+                             verbose = TRUE)
+
+  png("plots/map.png", width = 1800, height = 1800)
+  mapCountryData(map, nameColumnToPlot = "max", catMethod = "categorical",
+                 colourPalette = mapColor, mapTitle = "", addLegend = FALSE,
+                 missingCountryCol = "#bdbdbd")
+  dev.off()
+
+  ggplot(country, aes(x = reorder(country, max), fill = factor(max))) +
+    geom_bar() +
+    ylab(paste0("Number of Papers (", 
+                min(review$pub_year), 
+                " - ", 
+                max(review$pub_year), 
+                ")")) +
+    xlab("") +
+    scale_y_continuous(breaks = c(0, 5, 10, max(table(country$country)))) +
+    coord_flip() +
+    theme_minimal() +
+    theme(panel.border = element_blank(),
+          panel.grid.major.y = element_blank() ,
+          panel.grid.major.x = element_blank(), 
+          panel.grid.minor.x = element_blank()) +
+    scale_fill_viridis(guide = FALSE, discrete = TRUE)
+  
+
+  ggsave("plots/country.png", width = 13, height = 8, units = "cm", 
+         scale = 1.5)
+
+```
+
+```{r ethnicity}
+
+  ethnicity <- unique(review[c("pmid", "sample", "ethnicity")])
+
+  eth_table <- table(ethnicity$ethnicity)
+
+```
+
+### Ethnicity
+
+The reported ethnicities of participants were similarly homogeneous (See Supplemental Figure 1). Only `r round((eth_table["A"] + eth_table["B"] + eth_table["SA"] + eth_table["H"])/sum(eth_table), 3) * 100`% of samples were in non-white groups (Figure 3). Conversely, `r round(eth_table["C"]/sum(eth_table), 3) * 100`% of samples were of white people, while the `r round(eth_table["M"]/sum(eth_table), 3) * 100`% of samples composed of multiple ethnicities were still predominately white. The ethnicity was not stated for `r round(eth_table["U"]/sum(eth_table), 3) * 100`%, of samples.   
+
+```{r measurements}
+
+ review_measures <- nrow(distinct(review, pmid, sample, age_wk_rd))
+ neonatal_measures <- distinct(review, pmid, sample, age_wk_rd) %>%
+   filter(age_wk_rd == 0) %>% nrow()
+ post_measures <- distinct(review, pmid, sample, age_wk_rd) %>%
+   filter(age_wk_rd > 52) %>% nrow()
+ 
+```
+
+### Ages
+
+The studies in the review included a total of `r review_measures` age-specific measurements (Figure X). Of these, `r neonatal_measures` measurements were taken at or shortly after birth (`r round(neonatal_measures/review_measures, 3) * 100`%), while only `r post_measures` (`r round(post_measures/review_measures, 3) * 100`%) were taken after the first year of age (See Supplemental Figure 2). 
+
+```{r sample_sizes}
+
+  sample_n <- unique(review[c("sex", "pmid", "sample", "age_wk_rd", "n", 
+                              "pub_year")]) 
+
+# Split off and agregate the samples with n = 1, then merge back to total 
+  x <- filter(sample_n, n == 1) %>%
+    group_by(pmid, pub_year) %>%
+    summarise(n = n(), 
+              age_wk_rd = mean(age_wk_rd)) %>% 
+    mutate(sex = "C", sample = "a") %>%
+    ungroup() %>%
+    select(sex, pmid, sample, age_wk_rd, n, pub_year)
+  
+  sample_n <- rbind(filter(sample_n, n > 1), x); rm(x)
+
+```
+
+### Sample sizes
+
+The sample size of each age-specific measurement is given in Figure `r fig`. The median (IQR) sample size across all ages of measurement was `r summary(sample_n$n)["Median"]` (IQR `r summary(sample_n$n)["1st Qu."]` to `r summary(sample_n$n)["3rd Qu."]`) participants. Older studies tended to be smaller, and most studies with sample sizes > 50 were from 2010 or more recently. The largest samples (n >= 200) were only found in neonates. 
+
+#### Figure `r fig`.`r fig <- fig + 1` The sizes of each sample, by age (n = `r nrow(sample_n)` sample- and age-specific measurement occasions)
+```{r sample_size_plot}
+
+   ggplot(sample_n, aes(x = age_wk_rd, y = n, color = pub_year)) +
+     geom_point(size = 3, alpha = .5) +
+     scale_color_viridis("Year of Publication", direction = -1) +
+     xlab("Age (weeks)") +
+     scale_y_log10(breaks = c(1, 10, 20, 50, 100, 500, 1000)) +
+     ylab("Sample Size (log10 scale)") +
+     annotation_logticks(sides = "l") +
+     theme(panel.grid.minor = element_blank())
+   
+ # ggplot(sample_n, aes(x = age_wk_rd, y = n, color = pub_year)) +
+ #  geom_point(size = 3, alpha = .5) +
+ #   scale_color_viridis("Year of Publication", direction = -1) +
+ #  xlab("Age (weeks)") +
+ #  ylab("Sample Size") +
+ #  theme_minimal() 
+ # 
+
+  ggsave ("plots/sample_sizes.png",
+          width = 13, height = 8, units = "cm", scale = 1.5)
+
+```
+
+## Study quality
+
+```{r}
+  medians_n <- filter(review, !is.na(median)) %>%
+    distinct(pmid) %>%
+    nrow()
+
+  sex_n <- filter(review, sex != "Combined") %>%
+    distinct(pmid) %>%
+    nrow()
+ 
+  size_ga_n <- filter(review, !is.na(size_ga)) %>%
+    distinct(pmid) %>%
+    nrow()
+  
+  smoking_n <- filter(review, smoking != "U") %>%
+    distinct(pmid) %>%
+    nrow()
+  
+  gwg_n <- filter(review, mom_size %in% c("EGEG", "NGWG")) %>%
+    distinct(pmid) %>%
+    nrow()
+  
+  gdm_n <- filter(review, !is.na(gdm)) %>%
+    distinct(pmid) %>%
+    nrow()
+  
+  mom_size_n <- filter(review, !is.na(mom_size) & 
+                         !(mom_size %in% c("EGEG", "NGWG"))) %>%
+    distinct(pmid) %>%
+    nrow()
+  
+  
+  missing_year <- filter(review, is.na(data_year)) %>%
+    distinct(pmid) %>%
+    nrow()
+
+```
+
+Only `r medians_n`/`r review_n` studies in the review reported the median of one or more measures of body composition, while `r sex_n` reported sex-specific estimates, and just `r review_n - missing_year` reported which year(s) data were collected. 
+
+Relatively few studies reported information on key risk factors for altered infant body composition. Of the `r review_n` studies included in the review, `r size_ga_n` reported the size for gestational age of the infants; `r smoking_n` reported maternal smoking; `r mom_size_n` reported maternal body size; just `r gwg_n` reported gestational weight gain; and `r gdm_n` reported on impaired glucose tolerance. 
+
+## Quantitative meta-analysis
+```{r ma_flow}
+  ma_measures <- distinct(ma, measure, pmid, sample)
+
+  measure_table <- table(ma_measures$measure)
+
+```
+
+To facilitate the quantitative meta-analysis, we excluded an additional `r meta_exclude[3]` papers that reported body composition estimates in samples with wide age ranges (e.g. the mean FM isn’t particularly informative when the sample’s ages ranges from 1 to 90 days); and `r meta_exclude[1]` papers where we were not able to extract or estimate information on the variance of any body composition estimates. This left `r ma_n` papers that included data on `r ma_samples` different samples. 
+
+
+```{r ma_characteristics}
+ 
+  ma_char <- distinct(ma, sample, year, pmid, author, .keep_all = TRUE)
+  t_multiple <- table(ma_char$multiple)
+  t_ref <- table(ma_char$reference)
+  t_long <- table(ma_char$long)
+  t_who <- table(ma_char$who)
+  t_pop <- table(ma_char$popbased)
+
+# with(ma_char, table(popbased, who))  
+  
+# View(filter(ma_char, popbased == "no" & who == "yes"))
+  
+# table(is.na(ma_char$multiple))
+# table(is.na(ma_char$reference))
+# table(is.na(ma_char$long))
+# table(is.na(ma_char$who))
+# table(is.na(ma_char$popbased))
+  
+
+```
+
+Of these, `r t_ref["yes"]` samples were from studies whose aim was to report body composition reference data, and only `r t_who["yes"]` were recruited under criteria similar to those used in the WHO MSGRS. 
+
+FM was reported for `r measure_table["fm"]` samples, %FM was reported for `r measure_table["pct_fm"]`, and FFM was reported for `r measure_table["ffm"]`. 
+
+```{r long_measures}
+  
+  rev_measures <- distinct(review, measure, pmid, sample)
+  measure_table_review <- table(rev_measures$measure)
+
+```
+
+While `r t_long["yes"]` samples were longitudinal, very few reported estimates for the changes in body composition: just `r measure_table_review["dfm"]` reported changes in FM, `r measure_table_review["dffm"]` reproted changes in FFM, and `r measure_table_review["dpct_fm"]` reported changes in %FM. 
+
+
+### Coefficient of variation in measures
+```{r cv}
+
+  fm_cv <- filter(ma, measure == "fm")$cv
+  ffm_cv <- filter(ma, measure == "ffm")$cv
+
+```
+
+Figure `r fig` displays the coefficient of variation (CV = mean/SD) for sample-specific measures of FM and FFM. The CV for FFM was considerably lower and less variable (median CV `r round(summary(ffm_cv)["Median"], 2)`; IQR `r round(summary(ffm_cv)["1st Qu."], 2)` to `r round(summary(ffm_cv)["3rd Qu."], 2)`) than for FM (median CV `r round(summary(fm_cv)["Median"], 2)`; IQR `r round(summary(fm_cv)["1st Qu."], 2)` to `r round(summary(fm_cv)["3rd Qu."], 2)` ). It was also more stable over time, versus the CV for FM which was even larger in the first few weeks of life, where estimates ranged from `r round(summary(fm_cv)["Min."], 2)` to `r round(summary(fm_cv)["Max."], 2)`.
+
+#### Figure `r fig`.`r fig <- fig + 1` Coefficients of variation for sample- and age- specific measures of fat mass (n = `r length(fm_cv)`) and fat-free mass (n = `r length(ffm_cv)`)
+```{r cv_plot}
+
+  filter(ma, measure %in% c("fm", "ffm")) %>%
+    mutate(measure = factor(measure, 
+                            labels = c("Fat Free Mass (g)", "Fat Mass (g)"))) %>%
+  ggplot(aes(color = measure, y = cv, x = age_wk_rd)) +
+    geom_point(alpha = 0.5, size = 3) +
+    ylab("Coefficient of Variation (mean / SD)") +
+    xlab("Age (weeks)") +
+    scale_color_viridis("", end = 0.4, discrete = TRUE) +
+    scale_size(guide = FALSE) +
+    scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, by = 0.25)) +
+    theme(legend.position = "bottom") 
+
+  ggsave("plots/cv.png", width = 13, height = 8, units = "cm", scale = 1.5)
+  
+```
+
+
+### Mean values at each age
+
+Mean values for FM, %FM, and FFM, at each age, are displayed in Figures `r fig` through `r fig + 2`. The sex-specific reference values from Fomon, as well as the data from Butte (2000) are also highlighted by the dotted and dashed lines, respectively. The large amount of variability in %FM and FM at birth is evident. It is also clear that the Fomon reference values tend to fall well below most other sample data, especially for %FM.
+
+```{r mean_plot_function}
+
+  data <- rbind(ma, ref)
+
+  data$ncat[data$class == "REF"] <- "< 26"
+  
+  library(ggrepel)
+  
+  bc_plot <- function(anth, label, all_data, ...){
+    
+    if(all_data == TRUE){df <- data}
+    if(all_data == FALSE){df <- filter(data, age_wk_rd < 25)}
+    
+    return(
+      ggplot(filter(df, measure == anth), 
+             aes(x = age_wk_rd, y = mean, label = pmid, color = ncat)) +
+      geom_point(data = filter(df, measure == anth), 
+                 aes(shape = sex), alpha = 0.00) +
+      geom_point(data = filter(df, measure == anth & n <= 100), 
+                 aes(shape = sex), alpha = 0.2, size = 2) +
+      geom_point(data = filter(df, measure == anth & n > 100),
+                 aes(shape = sex), alpha = 0.6, size = 2) +
+      geom_point(data = filter(df, measure == anth & n > 200),
+                 aes(shape = sex), alpha = 0.8, size = 2) +
+      geom_point(data = filter(df, measure == anth & n > 400),
+                 aes(shape = sex), alpha = 1.0, size = 2) +
+      geom_line(data = filter(df, class   == "REF" & measure == anth & 
+                                  sex == "Males"),
+                size = .5, color = "black", alpha = .8, linetype = "dotted") +
+      geom_line(data = filter(df, class   == "REF" & measure == anth & 
+                                  sex == "Females"),
+                size = .5, color = "black", alpha = .8, linetype = "dotted") +
+      geom_line(data = filter(df, pmid == "10813580" & measure == anth & 
+                                  sex == "Males"),
+                size = .5, color = "black", alpha = .8, linetype = "dashed") +
+      geom_line(data = filter(df, pmid == "10813580" & measure == anth & 
+                                  sex == "Females"),
+                size = .5, color = "black", alpha = .8, linetype = "dashed") +
+      # geom_text_repel(data = filter(df, age_wk_rd > 25 & measure == anth), 
+      #                 size = 1) +
+      scale_color_viridis("Sample Size", discrete = TRUE) +
+      ylab(label) +
+      xlab("Age (weeks)") +
+      scale_shape(name = "Sex") +
+      theme(legend.direction = "horizontal",
+            legend.position = "bottom") +
+        guides(colour = guide_legend(title.position = "top", title.hjust = 0.5), 
+               shape  = guide_legend(title.position = "top", title.hjust = 0.5))
+    )
+  }
+
+```
+
+#### Figure `r fig`.`r fig <- fig + 1` Sample- and age-specific mean fat mass (g) values from birth to two years (n = `r nrow(filter(ma, measure == "fm"))` measurement occasions)
+```{r mean_fm_infancy}
+
+# FM
+# bc_plot("fm", "Fat Mass (g)", TRUE) + 
+#   coord_cartesian(xlim = c(0, 12), ylim = c(0, 2200)) +
+#   scale_x_continuous(breaks = seq(0, 12, by = 2))
+# ggsave ("plots/oneyear_fm.png",
+#         width = 13, height = 8, units = "cm", scale = 1.5)
+  
+  bc_plot("fm", "Fat Mass (g)", TRUE)
+  ggsave ("plots/full_fm.png",
+          width = 13, height = 8, units = "cm", scale = 1.5)
+  
+
+```
+
+
+#### Figure `r fig`.`r fig <- fig + 1` Sample- and age-specific mean fat mass (%) values from birth to two years (n = `r nrow(filter(ma, measure == "pct_fm"))` measurement occasions)
+```{r mean_pctfm_infancy}
+
+# %FM  
+# bc_plot("pct_fm", "Fat Mass (%)", TRUE) + 
+#   coord_cartesian(xlim = c(0, 12))+
+#   scale_x_continuous(breaks = seq(0, 12, by = 2))
+# ggsave ("plots/oneyear_pctfm.png",
+#         width = 13, height = 8, units = "cm", scale = 1.5)
+  
+  bc_plot("pct_fm", "Fat Mass (%)", TRUE)
+  ggsave ("plots/full_pctfm.png",
+          width = 13, height = 8, units = "cm", scale = 1.5)
+
+  
+
+# bc_plot("pct_ffm", "Fat-Free Mass (%)", FALSE)
+# ggsave ("plots/all_pctffm.png",
+#         width = 13, height = 8, units = "cm", scale = 1)
+# 
+# bc_plot("pct_ffm", "Fat-Free Mass (%)", TRUE)
+# ggsave ("plots/oneyear_pctffm.png",
+#         width = 13, height = 8, units = "cm", scale = 1)
+  
+
+```
+
+#### Figure `r fig`.`r fig <- fig + 1` Sample- and age-specific mean fat-free mass (g) values from birth to two years (n = `r nrow(filter(ma, measure == "ffm"))` measurement occasions)
+```{r mean_ffm_infancy}
+
+# FFM  
+# bc_plot("ffm", "Fat-Free Mass (g)", TRUE) + 
+#   coord_cartesian(xlim = c(0, 12), ylim = c(0, 5500)) +
+#   scale_x_continuous(breaks = seq(0, 12, by = 2))
+# ggsave ("plots/oneyear_ffm.png",
+#         width = 13, height = 8, units = "cm", scale = 1.5)
+# 
+  bc_plot("ffm", "Fat-Free Mass (g)", TRUE)
+  ggsave ("plots/full_ffm.png",
+          width = 13, height = 8, units = "cm", scale = 1.5)
+
+```
+
+### Means at birth and study type
+
+To better understand the variability of body composition measurements, and to identify outlier samples, Figures `r fig` through `r fig + 2` give the means at birth (and 95% CIs) for FM, %FM, and FFM (similar figures for weight and length are provided in the supplemental material). The figures highlight samples characterized by least one risk factor for abnormal body composition (impaired glucose tolerance, maternal obesity, SGA or LGA, high GWG, or maternal smoking), samples with no known risk factors (though this includes samples where we don't know one way or the other), and samples that were in line with the criteria used in the WHO MGRS.
+
+```{r birth_mean_function}
+
+  mean_plot <- function(value, label, ...){
+    df <- filter(ma, measure == value & age_wk_rd == 0)
+    return(
+      ggplot(df, 
+             aes(x = reorder(interaction(pmid, sample), mean), 
+                 y = mean, color = sample_type)) +
+        geom_errorbar(aes(ymax = mean + 1.96*sem, ymin = mean - 1.96*sem), 
+                      alpha = 0) +
+        geom_point(alpha = 0) +
+        geom_errorbar(data = filter(df, sample_type == "With risk factors"), 
+                      aes(ymax = mean + 1.96*sem, ymin = mean - 1.96*sem), 
+                      alpha = 0.3) +
+        geom_point(data = filter(df, sample_type == "With risk factors"), 
+                   alpha = 0.3) +
+        geom_errorbar(data = filter(df), 
+                      aes(ymax = mean + 1.96*sem, ymin = mean - 1.96*sem), 
+                      alpha = 0.5) +
+        geom_point(data = filter(df, sample_type == "No known risk factors"), 
+                   alpha = 0.5) +
+        geom_errorbar(data = filter(df, sample_type == "WHO criteria"), 
+                      aes(ymax = mean + 1.96*sem, ymin = mean - 1.96*sem)) +
+        geom_point(data = filter(df, sample_type == "WHO criteria"), size = 2) +
+        coord_flip() +
+        ylab(label) +
+        xlab("PMID.sample") +
+        scale_color_viridis("Sample type", discrete = TRUE) +
+        theme(axis.text.y = element_text(size = 5)#, 
+              #axis.ticks.y = element_blank(), 
+              #panel.grid.major.y = element_blank() ,
+              #panel.grid.minor.x = element_blank()
+              ) 
+    )
+  }
+
+
+```
+
+#### Figure `r fig`.`r fig <- fig + 1` Mean fat-free mass (g) at birth, with 95% CIs (n = `r nrow(filter(ma, measure == "fm" & age_wk_rd == 0))` relevant samples)
+```{r mean_fm_birth}
+  
+  mean_plot("fm", "Fat Mass (g)")
+
+  ggsave ("plots/birth_fm.png",
+          width = 13, height = 8, units = "cm", scale = 1.5)
+  
+```
+
+#### Figure `r fig`.`r fig <- fig + 1` Mean fat-free mass (g) at birth, with 95% CIs (n = `r nrow(filter(ma, measure == "pct_fm" & age_wk_rd == 0))` relevant samples)
+```{r mean_pctfm_birth}
+  
+  mean_plot("pct_fm", "Percent Fat Mass")
+
+  ggsave ("plots/birth_pctfm.png",
+          width = 13, height = 8, units = "cm", scale = 1.5)
+
+```
+
+#### Figure `r fig`.`r fig <- fig + 1` Mean fat-free mass (g) at birth, with 95% CIs (n = `r nrow(filter(ma, measure == "ffm" & age_wk_rd == 0))` relevant samples)
+```{r mean_ffm_birth}
+  
+  mean_plot("ffm", "Fat-Free Mass (g)")
+
+  ggsave ("plots/birth_ffm.png",
+          width = 13, height = 8, units = "cm", scale = 1.5)
+
+```
+
+
+### Estimated fat and fat-free mass distributions at birth
+
+```{r}
+
+  fm_df <- filter(
+    ma, 
+    age_wk_rd == 0 & measure == "fm" & sample_type != "With risk factors"
+    ) 
+
+  N  = fm_df$n
+  M  = length(N)
+  y  = fm_df$mean_nrml
+  s2 = fm_df$sd_nrml^2
+  
+  mod = "
+  model{
+    for(i in 1:length(y)){
+      y[i] ~ dnorm(mu[i], N[i] / sig2[i])
+      s2[i] ~ dgamma( (N[i] - 1)/2,  (N[i] - 1) / (2 * sig2[i])   )
+      mu[i] ~ dnorm(mu_mu, prec_mu)
+      # model on log(sigma)
+      sig2[i] <- exp(2*logsig[i])
+      logsig[i] ~ dnorm(mu_logsig, prec_logsig)
+    }
+  
+    # These priors are only meant for demonstration
+    mu_mu ~ dnorm(0, 1/10000)
+    mu_logsig ~ dnorm(0, 1/10000)
+    prec_mu <- pow(sigma_mu, -2)
+    prec_logsig <- pow(sigma_logsig, -2)
+    
+    # Half Cauchy (to allow heavy pooling)
+    sigma_mu ~ dt(0, 1, 1) I(0,)
+    sigma_logsig ~ dt(0, 1, 1) I(0,) 
+    
+  }
+  "
+  
+  forJAGS = list(y = y,
+                 s2 = s2,
+                 N = N)
+
+  library(rjags)
+  
+  comp.mod2  = jags.model(file = textConnection(mod),
+                         data = forJAGS)
+  
+  samps2 = coda.samples(
+    model = comp.mod2, 
+    variable.names = c("mu", "sig2", "mu_mu", "mu_logsig", "sigma_mu",
+                       "sigma_logsig"), 
+    n.iter = 100000
+    )[[1]]
+  
+# print(summary(samps2))
+  
+  mu.cols2 = grepl(pattern = "mu[", colnames(samps2), fixed = TRUE)
+  mu.est2 = colMeans(samps2[,mu.cols2])
+  
+# plot(density(samps2[,"mu_mu"]), main = "mu (mean)")
+  fm_mu <- round(mean(samps2[,"mu_mu"]), 2)
+  fm_sd <- round(mean(samps2[,"sigma_mu"]), 2)
+
+
+# Show pooling
+# plot(y, mu.est2, asp = TRUE, pch = 19)
+# abline(0,1, lty=2)
+
+
+# sig2.cols2 = grepl(pattern = "sig2[", colnames(samps2), fixed = TRUE)
+# sig2.est2 = colMeans(samps2[,sig2.cols2])
+
+# Show pooling
+# plot(s2, sig2.est2, asp = TRUE, pch = 19)
+# abline(0,1, lty=2)
+
+
+```
+
+In light of the obvious heterogeneity demonstrated in the plots above (and further explored using random effects meta-analysis models rerported and discussed in the supplemental information), we then excluded samples with known risk factors for abnormal body composition. With the remaining samples, we used Bayesian random effects models to derive pooled estimates of the $\mu$ and the $\sigma$ which were then used to describe the corresponding log-normal distributions, from which centiles were calculated.  
+
+For fat mass, $\mu$ and $\sigma$ were `r fm_mu` and `r fm_sd`, respectively. The resulting log-normal distribution is given in Figure `r fig` below. 
+
+#### Figure `r fig`.`r fig <- fig + 1` Estimated distribution of fat-free mass (g) at birth, highlighting the 5th, 10th, 25th, 50th, 75th, 90th, and 95th percentiles (from n = `r nrow(fm_df)` samples)
+```{r}
+
+  centiles = c(0.05, 0.10, 0.25, 0.5, 0.75, 0.90, 0.95)
+
+  ggplot(data_frame(x = 0:2000, y = dlnorm(x, fm_mu, fm_sd)), 
+         aes(x = x, y = y)) +
+    geom_ribbon(aes(ymin = 0, ymax = y), fill = "grey90") +
+    geom_segment(
+      data = data_frame(
+        x = round(qlnorm(centiles, fm_mu, fm_sd), 2), 
+        y = 0, 
+        yend = dlnorm(qlnorm(
+          centiles, fm_mu, fm_sd
+          ), fm_mu, fm_sd)
+        ), 
+      aes(x = x, xend = x, y = y, yend = yend)
+      ) +
+    geom_ribbon(aes(ymin = y, ymax = 0.00353), fill = "white") +
+    geom_line() +
+    scale_x_continuous(
+      breaks = c(0, round(qlnorm(centiles, fm_mu, fm_sd), 0), 1000, 1500)) +
+    theme(panel.grid = element_blank(), 
+          panel.background = element_rect(fill = "white"), 
+          axis.text.x = element_text(angle = 90, hjust = 1)) +
+    ylab("Density") +
+    xlab("Fat Mass (g)")
+
+
+```
+
+
+```{r morey}
+
+  ffm_df <- filter(
+    ma, 
+    age_wk_rd == 0 & measure == "ffm" & sample_type != "With risk factorsd"
+    ) 
+
+  N  = ffm_df$n
+  M  = length(N)
+  y  = ffm_df$mean_nrml
+  s2 = ffm_df$sd_nrml^2
+  
+  mod = "
+  model{
+    for(i in 1:length(y)){
+      y[i] ~ dnorm(mu[i], N[i] / sig2[i])
+      s2[i] ~ dgamma( (N[i] - 1)/2,  (N[i] - 1) / (2 * sig2[i])   )
+      mu[i] ~ dnorm(mu_mu, prec_mu)
+      # model on log(sigma)
+      sig2[i] <- exp(2*logsig[i])
+      logsig[i] ~ dnorm(mu_logsig, prec_logsig)
+    }
+  
+    # These priors are only meant for demonstration
+    mu_mu ~ dnorm(0, 1/10000)
+    mu_logsig ~ dnorm(0, 1/10000)
+    prec_mu <- pow(sigma_mu, -2)
+    prec_logsig <- pow(sigma_logsig, -2)
+    
+    # Half Cauchy (to allow heavy pooling)
+    sigma_mu ~ dt(0, 1, 1) I(0,)
+    sigma_logsig ~ dt(0, 1, 1) I(0,) 
+    
+  }
+  "
+  
+  forJAGS = list(y = y,
+                 s2 = s2,
+                 N = N)
+
+  library(rjags)
+  
+  comp.mod2  = jags.model(file = textConnection(mod),
+                         data = forJAGS)
+  
+  samps2 = coda.samples(
+    model = comp.mod2, 
+    variable.names = c("mu", "sig2", "mu_mu", "mu_logsig", "sigma_mu",
+                       "sigma_logsig"), 
+    n.iter = 100000
+    )[[1]]
+  
+  mu.cols2 = grepl(pattern = "mu[", colnames(samps2), fixed = TRUE)
+  mu.est2 = colMeans(samps2[,mu.cols2])
+  
+# plot(density(samps2[,"mu_mu"]), main = "mu (mean)")
+  ffm_mu <- round(mean(samps2[,"mu_mu"]), 2)
+  ffm_sd <- round(mean(samps2[,"sigma_mu"]), 2)
+
+
+# Show pooling
+# plot(y, mu.est2, asp = TRUE, pch = 19)
+# abline(0,1, lty=2)
+
+
+# sig2.cols2 = grepl(pattern = "sig2[", colnames(samps2), fixed = TRUE)
+# sig2.est2 = colMeans(samps2[,sig2.cols2])
+
+# Show pooling
+# plot(s2, sig2.est2, asp = TRUE, pch = 19)
+# abline(0,1, lty=2)
+
+
+```
+
+For fat-free mass, $\mu$ and $\sigma$ were `r ffm_mu` and `r ffm_sd`, respectively. The resulting log-normal distribution is given in Figure `r fig` below. 
+
+#### Figure `r fig`.`r fig <- fig + 1` Estimated distribution of fat-free mass (g) at birth, highlighting the 5th, 10th, 25th, 50th, 75th, 90th, and 95th percentiles (from n = `r nrow(ffm_df)` samples)
+```{r}
+
+  centiles = c(0.05, 0.10, 0.25, 0.5, 0.75, 0.90, 0.95)
+
+  ggplot(data_frame(x = 1500:4300, y = dlnorm(x, ffm_mu, ffm_sd)), 
+         aes(x = x, y = y)) +
+    geom_ribbon(aes(ymin = 0, ymax = y), fill = "grey90") +
+    geom_segment(
+      data = data_frame(
+        x = round(qlnorm(centiles, ffm_mu, ffm_sd), 2), 
+        y = 0, 
+        yend = dlnorm(qlnorm(
+          centiles, ffm_mu, ffm_sd
+          ), ffm_mu, ffm_sd)
+        ), 
+      aes(x = x, xend = x, y = y, yend = yend)
+      ) +
+    geom_ribbon(aes(ymin = y, ymax = 0.0012), fill = "white") +
+    geom_line() +
+    scale_x_continuous(
+      breaks = c(0, round(qlnorm(centiles, ffm_mu, ffm_sd), 0), 1000, 1500)) +
+    theme(panel.grid = element_blank(), 
+          panel.background = element_rect(fill = "white"), 
+          axis.text.x = element_text(angle = 90, hjust = 1)) +
+    ylab("Density") +
+    xlab("Fat Mass (g)")
+
+
+```
+
+
+## Supplemental information
+
+#### Figure `r sup_fig`.`r sup_fig <- sup_fig + 1`  Ethnicity of study samples (n = `r nrow(ethnicity)` samples)
+```{r ethnicity_plots}
+
+  ggplot(ethnicity, aes(x = ethnicity)) +
+    geom_bar(fill = viridis(1, begin = 0.5)) +
+    xlab("") +
+    ylab("Number of Samples") +
+    scale_x_discrete(breaks = c("B", "C", "H", "M", "SA", "A",
+                                "U"),
+                     limits = c("M", "C", "B", "SA", "H", "A", "U"),
+                     labels = c("Black", "White", "Hispanic",
+                                "Multiple", "South Asian", "Asian", 
+                                "Not Stated")) +
+    theme(panel.grid.major = element_blank(),
+          axis.ticks.x = element_blank())
+ 
+  ggsave ("plots/ethnicity.png",
+          width = 13, height = 8, units = "cm", scale = 1.5)
+```
+
+```{r ages_data}
+  ages <- unique(review[c("pmid", "sample", "age_wk_rd")]) # 241 MOs
+
+# summary(ages$age_wk_rd) # half in the first 9 weeks
+# nrow(filter(ages, age_wk_rd == 0 )) # 151
+# nrow(filter(ages, age_wk_rd >  52)) # 45
+
+```
+
+
+#### Figure `r sup_fig`.`r sup_fig <- sup_fig + 1` Ages at which body composition was measured (n = `r nrow(ages)` total measurement occasions)
+```{r ages_plot}
+
+
+  ggplot(ages, aes(x = age_wk_rd)) +
+    geom_histogram(fill = viridis(1, begin = 0.5), binwidth = 1.5) +
+    xlab("Age (weeks)") +
+    ylab("Number of Samples with a measurement at this age")
+
+  ggsave ("plots/ages.png",
+          width = 13, height = 8, units = "cm", scale = 1.5)
+
+```
+
+### Weights/Lengths at birth
+
+#### Figure `r sup_fig`.`r sup_fig <- sup_fig + 1` Mean length (cm) at birth, with 95% CIs (n = `r nrow(filter(ma, measure == "length" & age_wk_rd == 0))` relevant samples)
+```{r}
+  
+  mean_plot("length", "Birth Length (cm)")
+
+  ggsave ("plots/birth_length.png",
+          width = 13, height = 8, units = "cm", scale = 1.5)
+
+```
+
+#### Figure `r sup_fig`.`r sup_fig <- sup_fig + 1` Mean weight (g) at birth, with 95% CIs (n = `r nrow(filter(ma, measure == "weight" & age_wk_rd == 0))` relevant samples)
+```{r}
+  
+  mean_plot("weight", "Birth Weight (g)")
+
+  ggsave ("plots/birth_wt.png",
+          width = 13, height = 8, units = "cm", scale = 1.5)
+```
+
+
+### Metanalysis
+
+```{r meta_models}
+  library(metafor)
+
+  ma$yi  <- ma$mean
+  ma$vi  <- (ma$sd^2) / ma$n
+  ma$ni  <- ma$n
+  ma$sei <- ma$sem
+
+  fm0 <- filter(ma, measure == "fm" & age_wk_rd == 0)
+  fm0 <- droplevels(fm0)
+  fm0 <- arrange(fm0, desc(yi))
+  
+  ffm0 <- filter(ma, measure == "ffm" & age_wk_rd == 0)
+  ffm0 <- droplevels(ffm0)
+  ffm0 <- arrange(ffm0, desc(yi))
+
+  fm_empty <- rma(yi, vi, data = fm0)
+  fm_adj <- rma(yi, vi, mods = ~ pub_year + sex + sample_type + country, data = fm0)
+
+  ffm_empty <- rma(yi, vi, data = ffm0)
+  ffm_adj <- rma(yi, vi, mods = ~ pub_year + sex + sample_type + country, data = ffm0)
+
+
+```
+
+#### Figure `r sup_fig`.`r sup_fig <- sup_fig + 1` Forest plot for fat mass (g) at birth (n = `r nrow(fm0)` samples)
+```{r fm_forest}
+
+  forest(
+    fm_empty,
+    slab = paste(fm0$author, fm0$pub_year, fm0$pmid, fm0$sample, sep = ", ")
+    )
+
+```
+
+#### Figure `r sup_fig`.`r sup_fig <- sup_fig + 1` Funnel plot for fat mass (g) at birth (n = `r nrow(fm0)` samples)
+```{r fm_funnel}
+
+  funnel(fm_empty)
+
+```
+
+#### Figure `r sup_fig`.`r sup_fig <- sup_fig + 1` Forest plot for fat-free mass (g) at birth (n = `r nrow(ffm0)` samples)
+```{r ffm_forest}
+
+  forest(
+    ffm_empty,
+    slab = paste(ffm0$author, ffm0$pub_year, ffm0$pmid, ffm0$sample, sep = ", ")
+    )
+
+```
+
+#### Figure `r sup_fig`.`r sup_fig <- sup_fig + 1` Funnel plot for fat-free mass (g) at birth (n = `r nrow(ffm0)` samples)
+```{r ffm_funnel}
+
+  funnel(ffm_empty)
+
+```
+  
+  
+### Additional centiles
+
+Table X. Centiles of fat and fat-free mass (g) at birth. 
+```{r}
+
+  data_frame(
+    "Centiles" = c(0.025, seq(0.05, 0.95, 0.05), 0.975), 
+    "Fat mass (g)" = round(qlnorm(Centiles, fm_mu, fm_sd), 2),
+    "Fat-free mass (g)" = round(qlnorm(Centiles, ffm_mu, ffm_sd), 2)
+    ) %>%
+  knitr::kable()
+  
+```
+
+### Measurements at birth by year
+
+```{r}
+
+
+  ggplot(filter(ma, measure == "fm" & age_wk_rd == 0),
+         aes(x = pub_year, y = mean)) +
+    geom_point(aes(size = ncat, color = sample_type), alpha = 0.5) +
+    ylab("Fat Mass at Birth (g)") +
+    xlab("Year of Publication") +
+    scale_color_viridis("Sample type", discrete = TRUE) +
+    scale_size_discrete("N") 
+
+  ggsave ("plots/fm0_pubyear.png",
+          width = 13, height = 8, units = "cm", scale = 1.5)
+
+```
+
+```{r}
+
+  ggplot(filter(ma, measure == "pct_fm" & age_wk_rd == 0),
+         aes(x = pub_year, y = mean)) +
+    geom_point(aes(size = ncat, color = sample_type), alpha = 0.5) +
+    ylab("Fat Mass at Birth (%)") +
+    xlab("Year of Publication") +
+    scale_color_viridis("Sample type", discrete = TRUE) +
+    scale_size_discrete("N") 
+
+  ggsave ("plots/pctfm0_pubyear.png",
+          width = 13, height = 8, units = "cm", scale = 1.5)
+
+```
+
+```{r}
+
+  ggplot(filter(ma, measure == "ffm" & age_wk_rd == 0),
+         aes(x = pub_year, y = mean)) +
+    geom_point(aes(size = ncat, color = sample_type), alpha = 0.5) +
+    ylab("Fat Free Mass at Birth (g)") +
+    xlab("Year of Publication") +
+    scale_color_viridis("Sample type", discrete = TRUE) +
+    scale_size_discrete("N") 
+
+  ggsave ("plots/ffm0_pubyear.png",
+          width = 13, height = 8, units = "cm", scale = 1.5)
+
+```
+
+### BC and length vs weight
+
+```{r}
+
+  df <- filter(ma, age_wk_rd == 0) %>% 
+    select(pmid, measure, mean, pub_year, sample, ncat, sample_type) 
+
+  df <- df[!(duplicated(interaction(df$pmid, df$sample, df$measure))), ]
+  
+  df <- spread(df, measure, mean)
+
+  ggplot(df, aes(x = weight, y = fm)) +
+    geom_point(alpha = 0.8, aes(color = sample_type, size = ncat)) +
+    ylab("Fat Mass at Birth (g)") +
+    xlab("Birth Weight (g)") +
+    scale_size_discrete("N") +
+    scale_color_viridis("Sample type", discrete = TRUE) 
+
+  ggsave ("plots/fm0_wt0.png",
+          width = 13, height = 8, units = "cm", scale = 1.5)
+
+``` 
+
+```{r}
+
+  ggplot(df, aes(x = weight, y = pct_fm)) +
+    geom_point(alpha = 0.8, aes(color = sample_type, size = ncat)) +
+    ylab("Fat Mass at Birth (%)") +
+    xlab("Birth Weight (g)") +
+    scale_size_discrete(guide = FALSE) +
+    scale_color_viridis("N", discrete = TRUE) 
+
+  ggsave ("plots/pctfm0_wt0.png",
+          width = 13, height = 8, units = "cm", scale = 1.5)
+
+``` 
+
+```{r}
+
+
+  ggplot(df, aes(x = weight, y = ffm)) +
+    geom_point(alpha = 0.8, aes(color = sample_type, size = ncat)) +
+    ylab("Fat-Free Mass at Birth (g)") +
+    xlab("Birth Weight (g)") +
+    scale_size_discrete(guide = FALSE) +
+    scale_color_viridis("N", discrete = TRUE) 
+
+  ggsave ("plots/ffm0_wt0.png",
+          width = 13, height = 8, units = "cm", scale = 1.5)
+
+``` 
+
+```{r}
+
+
+  ggplot(df, aes(x = weight, y = length)) +
+    geom_point(alpha = 0.8, aes(color = sample_type, size = ncat)) +
+    ylab("Birth Length (cm)") +
+    xlab("Birth Weight (g)") +
+    scale_size_discrete(guide = FALSE) +
+    scale_color_viridis("N", discrete = TRUE)
+
+  ggsave ("plots/l0_wt0.png",
+          width = 13, height = 8, units = "cm", scale = 1.5)
+
+``` 
+
+
+
+```{r}
+
+  # dist_male <- list(); k <- 1
+  # for(i in unique(filter(bayes_df, measure == "fm")$age_wk_rd)){
+  #   x <- conjugate(filter(bayes_df, sex == "Males"), 
+  #                  "fm", i, "mean_nrml", "n", "sd_nrml")
+  #   x$age <- i
+  #   dist_male[[k]] <-  x[nrow(x), ]
+  #   k <- k + 1
+  # }
+  # 
+  # dist_male <- do.call(rbind, dist_male) %>%
+  #   arrange(age) %>%
+  #   filter(!is.na(mu)) %>%
+  #   mutate(sd = sqrt(var)) %>%
+  #   filter(age < 10)
+  # 
+  # 
+  # dist_female <- list(); k <- 1
+  # for(i in unique(filter(bayes_df, measure == "fm")$age_wk_rd)){
+  #   x <- conjugate(filter(bayes_df, sex == "Females"), 
+  #                  "fm", i, "mean_nrml", "n", "sd_nrml")
+  #   x$age <- i
+  #   dist_female[[k]] <-  x[nrow(x), ]
+  #   k <- k + 1
+  # }
+  # 
+  # dist_female <- do.call(rbind, dist_female) %>%
+  #   arrange(age) %>%
+  #   filter(!is.na(mu)) %>%
+  #   mutate(sd = sqrt(var)) %>%
+  #   filter(age < 10)
+  # 
+  # dist_comb <- list(); k <- 1
+  # for(i in unique(filter(bayes_df, measure == "fm")$age_wk_rd)){
+  #   x <- conjugate(filter(bayes_df, sex == "Combined"), 
+  #                  "fm", i, "mean_nrml", "n", "sd_nrml")
+  #   x$age <- i
+  #   dist_comb[[k]] <-  x[nrow(x), ]
+  #   k <- k + 1
+  # }
+  # 
+  # dist_comb <- do.call(rbind, dist_comb) %>%
+  #   arrange(age) %>%
+  #   filter(!is.na(mu)) %>%
+  #   mutate(sd = sqrt(var)) %>%
+  #   filter(age < 10)
+
+```
+
+```{r}
+  # knitr::kable(rbind(dist_male, dist_female, dist_comb))
+```
+
+
+```{r}
+
+  # dist_male <- list(); k <- 1
+  # for(i in unique(filter(bayes_df, measure == "ffm")$age_wk_rd)){
+  #   x <- conjugate(filter(bayes_df, sex == "Males"), 
+  #                  "ffm", i, "mean_nrml", "n", "sd_nrml")
+  #   x$age <- i
+  #   dist_male[[k]] <-  x[nrow(x), ]
+  #   k <- k + 1
+  # }
+  # 
+  # dist_male <- do.call(rbind, dist_male) %>%
+  #   arrange(age) %>%
+  #   filter(!is.na(mu)) %>%
+  #   mutate(sd = sqrt(var)) %>%
+  #   filter(age < 10)
+  # 
+  # 
+  # dist_female <- list(); k <- 1
+  # for(i in unique(filter(bayes_df, measure == "ffm")$age_wk_rd)){
+  #   x <- conjugate(filter(bayes_df, sex == "Females"), 
+  #                  "ffm", i, "mean_nrml", "n", "sd_nrml")
+  #   x$age <- i
+  #   dist_female[[k]] <-  x[nrow(x), ]
+  #   k <- k + 1
+  # }
+  # 
+  # dist_female <- do.call(rbind, dist_female) %>%
+  #   arrange(age) %>%
+  #   filter(!is.na(mu)) %>%
+  #   mutate(sd = sqrt(var)) %>%
+  #   filter(age < 10)
+  # 
+  # dist_comb <- list(); k <- 1
+  # for(i in unique(filter(bayes_df, measure == "ffm")$age_wk_rd)){
+  #   x <- conjugate(filter(bayes_df, sex == "Combined"), 
+  #                  "ffm", i, "mean_nrml", "n", "sd_nrml")
+  #   x$age <- i
+  #   dist_comb[[k]] <-  x[nrow(x), ]
+  #   k <- k + 1
+  # }
+  # 
+  # dist_comb <- do.call(rbind, dist_comb) %>%
+  #   arrange(age) %>%
+  #   filter(!is.na(mu)) %>%
+  #   mutate(sd = sqrt(var)) %>%
+  #   filter(age < 10)
+
+```
+
+```{r}
+  # knitr::kable(rbind(dist_male, dist_female, dist_comb))
+```
+
+
+
+```{r}
+
+qplot(sd, mean, data = filter(ma, measure == "weight"))
+qplot(sd, mean, data = filter(ma, measure == "length"))
+qplot(sd, mean, data = filter(ma, measure == "ffm"))
+qplot(sd, mean, data = filter(ma, measure == "fm"))
+qplot(sd, mean, data = filter(ma, measure == "pct_fm"))
+
+
+```
+

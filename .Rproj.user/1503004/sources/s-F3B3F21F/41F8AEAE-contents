@@ -1,0 +1,1016 @@
+---
+title: "SENATOR Phase 2 - Main Trial Results"
+author: "Darren L Dahly"
+date: "25 July 2017"
+output:
+  word_document:
+    reference_docx: style.1.docx
+  html_document: default
+---
+
+```{r setup, include = FALSE}
+
+  knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, 
+                        fig.width  = 6 * 1.67, fig.height = 6)
+
+# source("scripts/data.R")
+  source("scripts/functions.R")
+  load("main_data.RData")
+  
+  library(tidyverse)
+  library(RColorBrewer)
+  library(viridis)
+  library(pander)
+  library(knitr)
+  library(sjPlot)
+  library(htmlTable)
+  library(rms)
+  library(Hmisc)
+  library(ggbeeswarm)
+  library(ggrepel)
+
+```
+
+## Recruitment
+
+### Site specific recruitment over time for SENATOR phase 2 (n = 1537)
+```{r site_recruitment_time}
+
+  ggplot(random, aes(y = cummulative, x = allocation_date, color = factor(site))) +
+    geom_step(size = 1) +
+    scale_color_brewer("", palette = "Set1") +
+    theme_minimal() +
+    ylab("Number of patients") +
+    xlab("Date of randomization") 
+
+  ggsave("plots/recruitment_rates.png", scale = 0.6, units = "cm", 
+         width = 33.87, height = 19.05)
+
+```
+
+### Site specific total recruitment for SENATOR phase 2 (n = 1537)
+```{r site_recruitment_total}
+
+  ggplot(random, aes(x = site, fill = factor(site))) +
+    geom_bar() +
+    scale_fill_brewer(guide = FALSE, palette = "Set1") +
+    theme_minimal() +
+    ylab("Number of patients") +
+    geom_text(data =  select(random, site) %>%
+                  group_by(site) %>%
+                  summarise(n = n()),
+                aes(label = n, y = n + 10)) +
+    xlab("") 
+
+  ggsave("plots/recruitment_sites.png", scale = 0.6, units = "cm", 
+           width = 33.87, height = 19.05)
+
+```
+
+## Adherence
+
+### Adoption of SENATOR recommendations by site in the SENATOR arm (N = `r nrow(filter(adhere, arm == "SENATOR" & !is.na(adh_rule_code)))` total SENATOR recommendations)
+```{r adoption}
+
+# Note - there are some people with no meds and thus no triggers. Among those with 
+# tirggers, there are some missing adherence data in the SENATOR arm. (note: evenyone 
+# in the control arm is missing adherence)
+
+  df <- filter(adhere, arm == "SENATOR" & !is.na(adh_rule_code))
+  t <- table(df$adh_adapt_chng, useNA = "always")
+  p <- round(1 - (t[1] / sum(t[1], t[2])), 2)
+  
+  df$adh_adapt_chng <- as.character(df$adh_adapt_chng)
+  df$adh_adapt_chng[is.na(df$adh_adapt_chng)] <- "Missing"
+  df$adh_adapt_chng <- factor(df$adh_adapt_chng, levels = c("Yes", "No", "Missing"))
+
+  ggplot(df, aes(x = site, fill = adh_adapt_chng)) +
+    geom_bar(position = "fill") +
+    theme_minimal() +
+    scale_fill_brewer("Advice adopted", palette = "Set1", na.value = "grey50") +
+    ylab("") +
+    xlab("") +
+    scale_y_continuous(breaks = c(0, 0.25, 0.5, 0.75, p[[1]], 1)) +
+    geom_hline(yintercept = p[[1]], size = 2, linetype = "dashed", color = "white") 
+
+  ggsave("plots/adhere_sites.png", scale = 0.6, units = "cm", 
+             width = 33.87, height = 19.05)
+```
+
+### Proportion of adopted START/STOPP recommendations in the SENATOR arm, by site (N = `r nrow(df)`  total SENATOR recommendations)
+```{r rulecode_arm}
+
+  ggplot(df, aes(x = adh_rule_type, fill = adh_adapt_chng)) +
+    geom_bar(position = "fill") +
+    theme_minimal() +
+    scale_fill_brewer("Adopted?", palette = "Set1", na.value = "grey50") +
+    ylab("") +
+    xlab("") +
+    facet_wrap(~site)
+
+  ggsave("plots/stoppstart_adherence_sites.png", scale = 0.6, units = "cm", 
+             width = 33.87, height = 19.05)
+```
+
+
+## Trial Results
+
+### Sample characteristics by arm
+
+```{r table1}
+
+  table.1.var <- select(random, arm, site, demo_sex:meds)  
+
+  c <- filter(table.1.var, arm == "Control") %>% select(-arm)
+  s <- filter(table.1.var, arm == "SENATOR") %>% select(-arm)
+ 
+  t_n <- nrow(random)
+  c_n <- nrow(c)
+  s_n <- nrow(s)
+  
+  data_frame("Variable" = name.1(select(table.1.var, -arm)),
+             "Observations" = as.numeric(n.miss(select(table.1.var, -arm))),
+             "Total (n = 1537)" = summary.2(select(table.1.var, -arm)),
+             "Control (n = 765)" = summary.2(c),
+             "SENATOR (n = 772)" = summary.2(s),
+             "Test p-value" = tests.2(table.1.var)[-c(1:3)]) %>% 
+    knitr::kable()
+
+```
+
+### Analysis of Endpoints
+
+As defined in the protocol, the **Primary Endpoint** was the proportion of patients with at least one adjudicated probable or certain, non-trivial hospital-acquired ADR occurring within 14 days of enrollment during the index hospitalization. There were `r table(events$primary)["Yes"]` of these in total, which were experienced by `r table(random$primary)["Yes"]` patients. This was a total event rate of `r round(table(random$primary)["Yes"] / sum(table(random$primary)) * 100, 2)`%.
+
+Protocol defined Secondary Endpoints were as follows:
+
+S1 - The proportion of patients with at least one adjudicated possible, probable or certain, non-trivial hospital-acquired ADR occurring within 14 days of enrollment during index hospitalization
+
+S2 - The proportion of patients with at least one adjudicated probable or certain, non-trivial hospital-acquired, pre-specified ADR occurring within 14 days of enrollment during index hospitalization
+
+SPC - The number of adjudicated probable or certain, non-trivial hospital-acquired ADRs occurring within 14 days of enrollment during the index hospitalization (i.e. the count of Primary Endpoint events)
+
+S1C - The number of adjudicated possible, probable or certain, non-trivial hospital-acquired ADR occurring within 14 days of enrollment during index hospitalization (i.e. the count of S1 events)
+
+S2C - The number of adjudicated possible, probable or certain non-trivial hospital-acquired, **pre-specified** ADRs per patient, occurring within 14 days of enrollment during the index hospitalization (i.e. the count of S2 events)
+
+The distributions for each endpoint, as well as crude tests of differences between study arms, are given in the table below. 
+
+```{r table_ends}
+
+  table.1.var <- select(random, arm, primary:secondary_2count) 
+
+  names(table.1.var) <- c("arm", "Primary", "S1", "S2", "SPC", "S1C", "S2C")
+
+  c <- filter(table.1.var, arm == "Control") %>% select(-arm)
+  s <- filter(table.1.var, arm == "SENATOR") %>% select(-arm)
+  
+ 
+  t_n <- nrow(random)
+  c_n <- nrow(c)
+  s_n <- nrow(s)
+  
+  data_frame("Variable" = name.1(select(table.1.var, -arm)),
+             "Observations" = as.numeric(n.miss(select(table.1.var, -arm))),
+             "Total (n = 1537)" = summary.3(select(table.1.var, -arm)),
+             "Control (n = 765)" = summary.3(c),
+             "SENATOR (n = 772)" = summary.3(s),
+             "Test p-value" = tests.2(table.1.var)[-c(1:3)]) %>% 
+    knitr::kable()
+
+```
+
+Note: Test p-values are from Chi-squared tests for Primary, S1, and S2; and Kruskal-Wallis tests for SPC, S1C, and S2C. 
+
+
+### Primary Endpoint rates by site (p for heterogeneity < 0.001; N = `r nrow(random)` patients)
+```{r primary_plot}
+
+  overall <- round(table(random$primary)["Yes"] / sum(table(random$primary)), 2)
+
+  cases <- full_join(
+    select(random, site, primary) %>%
+      group_by(site, primary) %>%
+      filter(primary == "Yes") %>%
+      summarise(cases = n()), 
+    select(random, site) %>%
+      group_by(site) %>%
+      summarise(pop = n()),
+    by = "site") %>%
+  mutate(incidence = signif(cases/pop, 2),
+         se = 1/sqrt(cases),
+         ll = signif(exp(log(incidence) - 1.96 * se), 2),
+         ul = signif(exp(log(incidence) + 1.96 * se), 2),
+         ci = paste(ll, " to ", ul)) 
+
+  ggplot(cases, aes(x = site, y = incidence, ymax = ul, ymin = ll, color = site)) +
+    geom_pointrange(size = 2) +
+    theme_minimal() +
+    geom_text_repel(aes(label = incidence), color = "black", min.segment.length = 0, 
+                    nudge_x = 0.3) +
+    scale_color_brewer(guide = FALSE, palette = "Set1") +
+    geom_hline(yintercept = overall, color = "black", linetype = "dashed", size = 1) +
+    ylab("Proportion of sample experiencing primary endpoint") +
+    xlab("") +
+    scale_y_continuous(breaks = c(0, 0.1, 0.2, 0.25, 0.3, 0.4)) 
+
+  ggsave("plots/primary.png", scale = 0.6, units = "cm", 
+             width = 33.87, height = 19.05)
+    
+# rates <- function(data, ...){
+#     df <- data
+#     fit <- glm(sum(df$cases) ~ offset(log(sum(df$pop))),
+#                family = poisson, data = df)
+#     x <- exp(fit$coefficients) 
+#     y <- exp(confint(fit))
+#     return(paste0(df$site, " ",
+#                   round(x,2), " (", round(y[1], 2), " to ", round(y[2], 2), ")"))
+# }
+# 
+# rates(filter(cases, site == "Aberdeen"))
+# 
+# library(DescTools)
+# BinomCI(filter(cases, site == "Aberdeen")$cases, filter(cases, site == "Aberdeen")$pop)
+# 
+  
+```
+
+### Unadjusted models - Primary, S1, S2
+```{r unadjusted_binary}
+
+  m1_u <- glm(primary ~ arm + site + cnsnt_admitted_as, 
+           family = binomial(link = "logit"), data = random)
+
+  m2_u <- glm(secondary_1 ~ arm + site + cnsnt_admitted_as, 
+             family = binomial(link = "logit"), data = random)
+  
+  m3_u <- glm(secondary_2 ~ arm + site + cnsnt_admitted_as, 
+             family = binomial(link = "logit"), data = random)
+
+  outs <- c("Primary", "S1", "S2")
+  vars <- c("SENATOR (vs. Control)", 
+            "Reykjavik", "Aberdeen", "Madrid", "Ghent", "Ancona",
+            "Surgical (vs Medical)")
+  sjt.glm(m1_u, m2_u, m3_u, file = "tables/unadjusted1.html", 
+          depvar.labels = outs,
+          pred.labels = vars, 
+          ci.hyphen = " to ")
+
+```
+
+### Unadjusted models - SPC, S1C, S2C
+```{r unadjusted_counts, include = FALSE}
+  m4_u <- glm(secondary_pcount ~ arm + site + cnsnt_admitted_as, 
+              data = random, family = poisson)
+  m5_u <- glm(secondary_1count ~ arm + site + cnsnt_admitted_as, 
+              data = random, family = poisson)
+  m6_u <- glm(secondary_2count ~ arm + site + cnsnt_admitted_as, 
+              data = random, family = poisson)
+
+# m4_u <- pscl::zeroinfl(secondary_pcount ~ arm, data = random)
+# m5_u <- pscl::zeroinfl(secondary_1count ~ arm, data = random)
+# m6_u <- pscl::zeroinfl(secondary_2count ~ arm, data = random)
+  outs <- c("SPC", "S1C", "S2C")
+  vars <- c("SENATOR (vs. Control)", 
+            "Reykjavik", "Aberdeen", "Madrid", "Ghent", "Ancona",
+            "Surgical (vs Medical)")
+  sjt.glm(m4_u, m5_u, m6_u, file = "tables/unadjusted2.html",
+          depvar.labels = outs,
+          pred.labels = vars, 
+          ci.hyphen = " to ")
+
+
+```
+
+### Adjusted models - Primary, S1, S2
+```{r adjusted_binary, include = FALSE}
+
+  m1_a <- glm(primary ~ arm + site + cnsnt_admitted_as + demo_sex + demo_age + 
+                cirsg_score + meds, 
+           family = binomial(link = "logit"), data = random)
+
+  m2_a <- glm(secondary_1 ~ arm + site + cnsnt_admitted_as + demo_sex + demo_age + 
+                cirsg_score + meds, 
+           family = binomial(link = "logit"), data = random)
+  
+  m3_a <- glm(secondary_2 ~ arm + site + cnsnt_admitted_as + demo_sex + demo_age + 
+                cirsg_score + meds, 
+           family = binomial(link = "logit"), data = random)
+
+  outs <- c("Primary", "S1", "S2")
+  vars <- c("SENATOR (vs. Control)", 
+            "Reykjavik", "Aberdeen", "Madrid", "Ghent", "Ancona",
+            "Surgical (vs Medical)",
+            "Male", "Age", "CIRSG", "Number of Medications")
+  
+  sjt.glm(m1_a, m2_a, m3_a, file = "tables/adjusted1.html",
+          depvar.labels = outs,
+          pred.labels = vars, 
+          ci.hyphen = " to ")
+
+```
+
+### Adjusted SPC, S1C, S2C
+```{r adjusted_counts, include = FALSE}
+  m4_a <- glm(secondary_pcount ~ arm + site + cnsnt_admitted_as + demo_sex + 
+                demo_age + cirsg_score + meds, data = random, family = poisson)
+  m5_a <- glm(secondary_1count ~ arm + site + cnsnt_admitted_as + demo_sex + 
+                demo_age + cirsg_score + meds, data = random, family = poisson)
+  m6_a <- glm(secondary_2count ~ arm + site + cnsnt_admitted_as + demo_sex + 
+                demo_age + cirsg_score + meds, data = random, family = poisson)
+
+# m4_a <- pscl::zeroinfl(secondary_pcount ~ arm + site + cnsnt_admitted_as +
+#                          demo_sex + 
+#               demo_age + demo_education + demo_smoker + demo_alcohol + 
+#               cirsg_score + xtra_previous_fall + xtra_previous_adr + bart_score +
+#               meds, data = random)
+# m5_a <- pscl::zeroinfl(secondary_1count ~ arm + site + cnsnt_admitted_as +
+#                          demo_sex + 
+#               demo_age + demo_education + demo_smoker + demo_alcohol + 
+#               cirsg_score + xtra_previous_fall + xtra_previous_adr + bart_score +
+#               meds, data = random)
+# m6_a <- pscl::zeroinfl(secondary_2count ~ arm + site + cnsnt_admitted_as +
+#                          demo_sex + 
+#               demo_age + demo_education + demo_smoker + demo_alcohol + 
+#               cirsg_score + xtra_previous_fall + xtra_previous_adr + bart_score +
+#               meds, data = random)
+  
+  outs <- c("SPC", "S1C", "S2C")
+  vars <- c("SENATOR (vs. Control)", 
+            "Reykjavik", "Aberdeen", "Madrid", "Ghent", "Ancona",
+            "Surgical (vs Medical)",
+            "Male", "Age", "CIRSG", "Number of Medications")
+  
+  sjt.glm(m4_a, m5_a, m6_a, file = "tables/adjusted2.html",
+          depvar.labels = outs,
+          pred.labels = vars, 
+          ci.hyphen = " to ")
+
+
+```
+
+### ADRROP
+
+### Model results for the original ADRROP score in the Phase 2 SENATOR trial data
+```{r adrrop_score_model, include = FALSE}
+
+	adrrop_score_m <- glm(primary ~ adrrop_1,
+								    data = random,
+								    family = binomial(logit))
+
+  sjt.glm(adrrop_score_m, file = "tables/adrrop_1_logit.html",
+          depvar.labels = "Primary",
+          pred.labels = "ADRROP Score (0-27)", 
+          ci.hyphen = " to ")
+
+```
+
+### Area under the ROC for the original ADRROP score in the Phase 2 SENATOR trial data
+```{r adrrop_score_auc}
+
+	library(ROCR)
+
+# From http://blog.yhathq.com/posts/roc-curves.html
+
+	prob <- predict(adrrop_score_m, newdata = random, type = "response")
+	pred <- prediction(prob, random$primary)
+	perf <- performance(pred, measure = "tpr", x.measure = "fpr")
+	auc <- performance(pred, measure = "auc")
+	auc <- auc@y.values[[1]]
+
+	roc.data <- data.frame(fpr   = unlist(perf@x.values),
+												 tpr   = unlist(perf@y.values),
+												 model ="GLM")
+
+	ggplot(roc.data, aes(x = fpr, ymin = 0, ymax = tpr)) +
+		geom_ribbon(alpha = 0.2, fill = brewer.pal(3, "Set1")[1]) +
+		geom_line(aes(y = tpr), size = 2) +
+		xlab("False Positive Rate (1 - Specificity)") +
+		ylab("True Positive Rate (Sensitivity)") +
+		geom_abline(intercept = 0, slope = 1, color = "red", linetype = "dashed",
+								size = 1) +
+		coord_cartesian(xlim = c(0, 1), ylim = c(0, 1)) +
+		ggtitle(paste0("Area under the curve = ", round(auc, 2))) +
+		theme(text = element_text(size = 16),
+					axis.text = element_text(color = "black"))
+
+	ggsave("plots/adrrop_score_auc.png", scale = 0.6, units = "cm", 
+         width = 33.87, height = 19.05)
+
+
+```
+
+
+### Model results for re-estimated ADRROP indicators in the Phase 2 SENATOR trial data
+```{r adrrop_new_model, include = FALSE}
+
+	adrrop_new_m <- glm(
+	  primary ~ ad_sex + ad_over70 + ad_not_independent + ad_fall + ad_conds_more4 +
+	    ad_kidney_fail + ad_liver_fail + ad_stopp_count2, 
+	  data = random,
+		family = binomial(logit)
+		)
+	
+	vars <- c("Female", "Over 70 y/a", "Not Independent", "Previous Fall", 
+	          "4+ Conditions", "Renal Failure", "Liver Failure", 
+	          "1 STOPP Medication", "2+ STOPP Medications")
+	
+	sjt.glm(adrrop_new_m, file = "tables/adrrop_new_logit.html",
+          depvar.labels = "Primary",
+          pred.labels = vars, 
+          ci.hyphen = " to ")
+
+```
+
+### Area under the ROC for the re-estimated ADRROP indicators in the Phase 2 SENATOR trial data
+```{r adrrop_new_auc}
+
+	prob <- predict(adrrop_new_m, newdata = random, type = "response")
+	pred <- prediction(prob, random$primary)
+	perf <- performance(pred, measure = "tpr", x.measure = "fpr")
+	auc <- performance(pred, measure = "auc")
+	auc <- auc@y.values[[1]]
+
+	roc.data <- data.frame(fpr   = unlist(perf@x.values),
+												 tpr   = unlist(perf@y.values),
+												 model ="GLM")
+
+	ggplot(roc.data, aes(x = fpr, ymin = 0, ymax = tpr)) +
+		geom_ribbon(alpha = 0.2, fill = brewer.pal(3, "Set1")[1]) +
+		geom_line(aes(y = tpr), size = 2) +
+		xlab("False Positive Rate (1 - Specificity)") +
+		ylab("True Positive Rate (Sensitivity)") +
+		geom_abline(intercept = 0, slope = 1, color = "red", linetype = "dashed",
+								size = 1) +
+		coord_cartesian(xlim = c(0, 1), ylim = c(0, 1)) +
+		ggtitle(paste0("Area under the curve = ", round(auc, 2))) +
+		theme(text = element_text(size = 16),
+					axis.text = element_text(color = "black"))
+
+	ggsave("plots/adrrop_score_auc.png", scale = 0.6, units = "cm", 
+         width = 33.87, height = 19.05)
+
+
+```
+
+### Model results for fully flexible ADRROP indicators in the Phase 2 SENATOR trial data
+```{r adrrop_flex_model, include = FALSE}
+
+  d <- datadist(random)
+  options(datadist = "d")
+
+	adrrop_flex_m <- glm(
+	  primary ~ ad_sex + rcs(demo_age, 5) + care_house + ad_fall + rcs(conds_count, 5) +
+	    rcs(gfr, 5) + ad_liver_fail + rcs(ad_stopp_count), 
+	  data = random,
+		family = binomial(logit)
+		)
+
+# 	or.vector <- exp(adrrop_flex_m$coef)
+# 	ci.vector <- exp(confint(adrrop_flex_m))
+# 	
+# # vars <- c()
+# 	stargazer(adrrop_flex_m, ci = T, digits = 2,
+# 						coef = list(or.vector),
+# 						ci.custom = list(ci.vector),
+# 						out = "tables/adrrop_flex_logit.html",
+# 						star.cutoffs = c(0.00000000000000001),
+# 						single.row = T, type = "latex"
+# 					# covariate.labels = , 
+# 						)
+	
+vars <- c("Female",
+"Age",
+"Age'",
+"Age''",
+"Age'''",
+"Sheltered housing",
+"Care home without nursing",
+"Care home with nursing",
+"Previous fall (Yes)",
+"Conditions",
+"Conditions'",
+"Conditions''",
+"Conditions'''",
+"GFR",
+"GFR'",
+"GFR''",
+"GFR'''",
+"Liver failure (Yes)",
+"STOPP medications",
+"STOPP medications'",
+"STOPP medications''",
+"STOPP medications'''")
+	
+	sjt.glm(adrrop_flex_m, file = "tables/adrrop_flex_logit.html",
+          depvar.labels = "Primary",
+          ci.hyphen = " to ", 
+	        pred.labels = vars)
+
+```
+
+### Area under the ROC for the fully flexible ADRROP indicators in the Phase 2 SENATOR trial data
+```{r adrrop_flex_auc}
+
+	prob <- predict(adrrop_flex_m, newdata = random, type = "response")
+	pred <- prediction(prob, random$primary)
+	perf <- performance(pred, measure = "tpr", x.measure = "fpr")
+	auc <- performance(pred, measure = "auc")
+	auc <- auc@y.values[[1]]
+
+	roc.data <- data.frame(fpr   = unlist(perf@x.values),
+												 tpr   = unlist(perf@y.values),
+												 model ="GLM")
+
+	ggplot(roc.data, aes(x = fpr, ymin = 0, ymax = tpr)) +
+		geom_ribbon(alpha = 0.2, fill = brewer.pal(3, "Set1")[1]) +
+		geom_line(aes(y = tpr), size = 2) +
+		xlab("False Positive Rate (1 - Specificity)") +
+		ylab("True Positive Rate (Sensitivity)") +
+		geom_abline(intercept = 0, slope = 1, color = "red", linetype = "dashed",
+								size = 1) +
+		coord_cartesian(xlim = c(0, 1), ylim = c(0, 1)) +
+		ggtitle(paste0("Area under the curve = ", round(auc, 2))) +
+		theme(text = element_text(size = 16),
+					axis.text = element_text(color = "black"))
+
+	ggsave("plots/adrrop_score_auc.png", scale = 0.6, units = "cm", 
+         width = 33.87, height = 19.05)
+
+
+```
+
+
+
+## Appendix 1: Incident adverse events
+
+### Event severity (N = `r nrow(iaes)` adverse events (AEs))
+```{r severity}
+
+  n <- nrow(iaes)
+
+  ggplot(iaes, aes(x = severity, fill = factor(severity))) +
+    geom_bar() +
+    theme_minimal() +
+    scale_fill_viridis(guide = FALSE, discrete = TRUE) +
+    ylab("Count") +
+    xlab("Severity") +
+    scale_x_continuous(breaks = 1:7) 
+
+  ggsave("plots/severity.png", scale = 0.6, units = "cm", 
+           width = 33.87, height = 19.05)
+```
+
+### Event severity by site (N = `r nrow(iaes)` AEs)
+```{r severity_site}
+
+  ggplot(iaes, aes(x = site, fill = factor(severity))) +
+    geom_bar(position = "fill") +
+    theme_minimal() +
+    scale_fill_viridis("Severity", discrete = TRUE) +
+    ylab("") +
+    xlab("") +
+    scale_y_continuous(labels = scales::percent) 
+
+  ggsave("plots/severity_sites.png", scale = 0.6, units = "cm", 
+           width = 33.87, height = 19.05)
+
+```
+
+### Event causality (N = `r nrow(iaes)` adverse events (AEs))
+```{r causality}
+
+  ggplot(iaes, aes(x = causality_final, fill = factor(causality_final))) +
+    geom_bar() +
+    theme_minimal() +
+    scale_fill_viridis(guide = FALSE, discrete = TRUE) +
+    ylab("Count") +
+    xlab("Causality") 
+
+  ggsave("plots/causality.png", scale = 0.6, units = "cm", 
+             width = 33.87, height = 19.05)
+
+
+```
+
+### Event causality by site (N = `r nrow(iaes)` AEs)
+```{r causality_site}
+
+  ggplot(iaes, aes(x = site, fill = factor(causality_final))) +
+    geom_bar(position = "fill") +
+    theme_minimal() +
+    scale_fill_viridis("Causality", discrete = TRUE) +
+    ylab("") +
+    xlab("") +
+    scale_y_continuous(labels = scales::percent) 
+
+  ggsave("plots/causality_site.png", scale = 0.6, units = "cm", 
+             width = 33.87, height = 19.05)
+
+```
+
+### Changes in causality due to adjudication (N = `r nrow(iaes)` AEs)
+```{r causality_changes}
+
+  ggplot(iaes, aes(x = causality, fill = causality_final)) +
+    geom_bar() +
+    scale_fill_viridis("Adjudicated causality", discrete = TRUE) +
+    xlab("Initial causality") +
+    ylab("Count") +
+    theme_minimal()
+  
+ggsave("plots/causality_changes.png", scale = 0.6, units = "cm", 
+             width = 33.87, height = 19.05)
+```
+
+```{r causality_changes_table}
+
+# descr::CrossTable(iaes$causality, iaes$causality_final, 
+#                   prop.r = TRUE, prop.c = FALSE, prop.t = FALSE,
+#                   prop.chisq = FALSE) %>% pander()
+
+```
+
+
+### Types of adverse events (N = `r nrow(iaes)` AEs)
+```{r event_types}
+
+  ggplot(iaes, aes(x = event, fill = event)) +
+    geom_bar() +
+    theme_minimal() +
+    scale_fill_manual(guide = FALSE, 
+                      values = c(brewer.pal(12, "Paired"), 
+                                 brewer.pal(4, "Set1")[c(2, 4)])) +
+    coord_flip() +
+    xlab("") +
+    ylab("Count") 
+
+  ggsave("plots/events.png", scale = 0.6, units = "cm", 
+             width = 33.87, height = 19.05)
+```
+
+### Types of adverse events by site (N = `r nrow(iaes)` AEs)
+```{r event_types_site}
+
+  ggplot(iaes, aes(x = site, fill = event)) +
+    geom_bar(position = "fill") +
+    theme_minimal() +
+    scale_fill_manual("Event type", 
+                        values = c(brewer.pal(12, "Paired"), 
+                                   brewer.pal(4, "Set1")[c(2, 4)])) +
+    ylab("") +
+    xlab("") +
+    scale_y_continuous(labels = scales::percent) 
+
+  ggsave("plots/events_sites.png", scale = 0.6, units = "cm", 
+             width = 33.87, height = 19.05)
+```
+
+
+## Appendix 2: Adherence
+
+### Proportion of START/STOPP recommendations by arms and site (N = `r nrow(filter(adhere, !is.na(adh_rule_type)))` total SENATOR recommendations)
+```{r ruletype_arm_prop}
+
+# Note, this removes the 7 people with no meds and this no triggers. 
+
+  ggplot(filter(adhere, !is.na(adh_rule_type)), 
+         aes(x = arm, fill = adh_rule_type)) +
+    geom_bar(position = "fill") +
+    theme_minimal() +
+    scale_fill_brewer("", palette = "Set1", na.value = "grey50") +
+    ylab("") +
+    xlab("") +
+    facet_wrap(~site) 
+
+  ggsave("plots/stoppstart_sites_prop.png", scale = 0.6, units = "cm", 
+             width = 33.87, height = 19.05)
+```
+
+### Absolute number of START/STOPP recommendations by arms and site (N = `r nrow(filter(adhere, !is.na(adh_rule_type)))` total SENATOR recommendations)
+```{r ruletype_arm_abs}
+
+# Note, this removes the 7 people with no meds and this no triggers. 
+
+  ggplot(filter(adhere, !is.na(adh_rule_type)), 
+         aes(x = arm, fill = adh_rule_type)) +
+    geom_bar() +
+    theme_minimal() +
+    scale_fill_brewer("", palette = "Set1", na.value = "grey50") +
+    ylab("") +
+    xlab("") +
+    facet_wrap(~site) 
+
+  ggsave("plots/stoppstart_sites_absolute.png", scale = 0.6, units = "cm", 
+             width = 33.87, height = 19.05)
+```
+
+
+```{r rulecode_data}
+
+# Take the mosot common codes 
+  df2 <- filter(adhere, code_count > 10 & !is.na(adh_rule_type))
+
+```
+
+### Number of specific SENATOR STOPP recommendations by arm (N = `r nrow(filter(df2, adh_rule_type == "STOPP"))` total SENATOR recommendations with at least 10 occurrences)
+```{r rulecode_arm_stopp}
+
+  filter(df2, adh_rule_type == "STOPP") %>%
+    group_by(adh_rule_code) %>%
+    summarise(code_count_stopp = n()) %>%
+    full_join(filter(df2, adh_rule_type == "STOPP"), 
+              by = "adh_rule_code") %>%
+    mutate(adh_rule_code = reorder(factor(adh_rule_code), code_count_stopp)) %>%
+  ggplot(aes(x = adh_rule_code, fill = adh_rule_type)) +
+    geom_bar() +
+    theme_minimal() +
+    scale_fill_brewer(guide = FALSE, palette = "Set1", na.value = "grey50") +
+    ylab("") +
+    xlab("") +
+    coord_flip() +
+    facet_wrap(~arm) +
+    theme(panel.grid.minor = element_blank(), 
+          panel.grid.major.y = element_blank())
+
+  ggsave("plots/stopp_code_arm.png", scale = 0.6, units = "cm", 
+             width = 33.87, height = 19.05)
+```
+
+### Number of specific SENATOR START recommendations by arm (N = `r nrow(filter(df2, adh_rule_type == "START"))` total SENATOR recommendations with at least 10 occurrences)
+```{r rulecode_arm_start}
+
+  filter(df2, adh_rule_type == "START") %>%
+    group_by(adh_rule_code) %>%
+    summarise(code_count_start = n()) %>%
+    full_join(filter(df2, adh_rule_type == "START"), 
+              by = "adh_rule_code") %>%
+    mutate(adh_rule_code = reorder(factor(adh_rule_code), code_count_start)) %>%
+  ggplot(aes(x = adh_rule_code, fill = adh_rule_type)) +
+    geom_bar() +
+    theme_minimal() +
+    scale_fill_brewer(guide = FALSE, palette = "Set1", na.value = "grey50") +
+    ylab("") +
+    xlab("") +
+    coord_flip() +
+    facet_wrap(~arm) +
+    theme(panel.grid.minor = element_blank(), 
+          panel.grid.major.y = element_blank())
+
+  ggsave("plots/start_code_arm.png", scale = 0.6, units = "cm", 
+             width = 33.87, height = 19.05)
+  
+  
+```
+
+### Adherence to specific SENATOR STOPP recommendations in the SENATOR arm (N = `r nrow(filter(df, adh_rule_type == "STOPP"))` total SENATOR recommendations with at least 10 occurrences)
+```{r rulecode_adopt_stopp}
+
+  filter(filter(df, adh_rule_type == "STOPP")) %>%
+    group_by(adh_rule_code) %>%
+    summarise(code_count_stopp = n()) %>%
+    full_join(filter(df, adh_rule_type == "STOPP"), 
+              by = "adh_rule_code") %>%
+    mutate(adh_rule_code = reorder(factor(adh_rule_code), code_count_stopp)) %>%
+  ggplot(aes(x = adh_rule_code, fill = adh_adapt_chng)) +
+    geom_bar() +
+    theme_minimal() +
+    scale_fill_brewer("Adopted?", palette = "Set1", na.value = "grey50") +
+    ylab("") +
+    xlab("") +
+    coord_flip() +
+    theme(panel.grid.minor = element_blank(), 
+          panel.grid.major.y = element_blank())
+
+  ggsave("plots/stopp_code_adopted.png", scale = 0.6, units = "cm", 
+             width = 33.87, height = 19.05)
+  
+  
+```
+
+### Adherence to specific SENATOR START recommendations in the SENATOR arm (N = `r nrow(filter(df, adh_rule_type == "START"))` total SENATOR recommendations with at least 10 occurrences)
+```{r rulecode_adopt_start}
+
+  filter(filter(df, adh_rule_type == "START")) %>%
+    group_by(adh_rule_code) %>%
+    summarise(code_count_start = n()) %>%
+    full_join(filter(df, adh_rule_type == "START"), 
+              by = "adh_rule_code") %>%
+    mutate(adh_rule_code = reorder(factor(adh_rule_code), code_count_start)) %>%
+  ggplot(aes(x = adh_rule_code, fill = adh_adapt_chng)) +
+    geom_bar() +
+    theme_minimal() +
+    scale_fill_brewer("Adopted?", palette = "Set1", na.value = "grey50") +
+    ylab("") +
+    xlab("") +
+    coord_flip() +
+    theme(panel.grid.minor = element_blank(), 
+          panel.grid.major.y = element_blank())
+
+  ggsave("plots/start_code_adopted.png", scale = 0.6, units = "cm", 
+             width = 33.87, height = 19.05)
+  
+  
+```
+
+## Appendix 3: Patient characteristics
+
+### Specialties (N = `r nrow(random)` patients)
+```{r specialties}
+
+  ggplot(random, aes(x = cnsnt_specialty, fill = cnsnt_specialty)) +
+    geom_bar() +
+    theme_minimal() +
+    scale_fill_manual(guide = FALSE,
+                      values = c(brewer.pal(12, "Paired"),
+                                 brewer.pal(9, "Set1"))) +
+    coord_flip() +
+    xlab("") +
+    ylab("Count") 
+
+  ggsave("plots/specialties.png", scale = 0.6, units = "cm", 
+             width = 33.87, height = 19.05)
+```
+
+### Specialties by site (N = `r nrow(random)` patients)
+```{r specialties_site}
+
+  ggplot(random, aes(x = site, fill = cnsnt_specialty)) +
+    geom_bar(position = "fill") +
+    theme_minimal() +
+    scale_fill_manual("Specialty", 
+                        values = c(brewer.pal(12, "Paired"), 
+                                   brewer.pal(9, "Set1"))) +
+    ylab("") +
+    xlab("") +
+    scale_y_continuous(labels = scales::percent) 
+
+  ggsave("plots/spec_sites.png", scale = 0.6, units = "cm", 
+             width = 33.87, height = 19.05)
+```
+
+### Admission type by site (N = `r nrow(random)` patients)
+```{r admission_type}
+
+  ggplot(random, aes(x = site, fill = cnsnt_admitted_as)) +
+    geom_bar(position = "fill") +
+    theme_minimal() +
+    scale_fill_brewer("Admission type", palette = "Set1") +
+    ylab("") +
+    xlab("") +
+    scale_y_continuous(labels = scales::percent)
+
+  ggsave("plots/admitted_sites.png", scale = 0.6, units = "cm", 
+             width = 33.87, height = 19.05)
+```
+
+### Age by site (N = `r nrow(random)` patients)
+```{r age}
+
+  ggplot(random, aes(y = demo_age, x = site, color = site, fill = site)) +
+    geom_beeswarm(alpha = 0.5, cex = 0.5) +
+    geom_boxplot(alpha = 0.1, color = "black") +
+    scale_color_brewer(guide = FALSE, palette = "Set1") +
+    scale_fill_brewer(guide = FALSE, palette = "Set1") +
+    theme_minimal() +
+    xlab("") +
+    ylab("Age (years)") 
+
+  ggsave("plots/age.png", scale = 0.6, units = "cm", 
+             width = 33.87, height = 19.05)
+ 
+```
+
+### Number of medications by site (N = `r nrow(random)` patients)
+```{r meds}
+
+  ggplot(random, aes(y = meds, x = site, color = site, fill = site)) +
+    geom_beeswarm(alpha = 0.5, cex = 0.3) +
+    geom_boxplot(alpha = 0.1, color = "black") +
+    scale_color_brewer(guide = FALSE, palette = "Set1") +
+    scale_fill_brewer(guide = FALSE, palette = "Set1") +
+    theme_minimal() +
+    xlab("") +
+    ylab("Number of medications") 
+
+  ggsave("plots/meds.png", scale = 0.6, units = "cm", 
+             width = 33.87, height = 19.05)
+ 
+```
+
+### CIRSG score by site (N = `r nrow(random)` patients)
+```{r cirsg}
+
+  ggplot(random, aes(y = cirsg_score, x = site, color = site, fill = site)) +
+    geom_beeswarm(alpha = 0.5, cex = 0.3) +
+    geom_boxplot(alpha = 0.1, color = "black") +
+    scale_color_brewer(guide = FALSE, palette = "Set1") +
+    scale_fill_brewer(guide = FALSE, palette = "Set1") +
+    theme_minimal() +
+    xlab("") +
+    ylab("CIRSG")
+
+  ggsave("plots/cirsg.png", scale = 0.6, units = "cm", 
+             width = 33.87, height = 19.05)
+ 
+```
+
+### Barthel index by site (N = `r nrow(random)` patients)
+```{r barthel}
+
+  ggplot(random, aes(x = bart_score, color = site, fill = site)) +
+    geom_bar() +
+    scale_color_brewer(guide = FALSE, palette = "Set1") +
+    scale_fill_brewer(guide = FALSE, palette = "Set1") +
+    facet_wrap(~site) +
+    theme_minimal() +
+    ylab("Count") +
+    xlab("Barthel") 
+
+  ggsave("plots/barthel.png", scale = 0.6, units = "cm", 
+             width = 33.87, height = 19.05)
+ 
+```
+
+
+## Appendix 4: Endpoints
+
+### Primary, S1, and S2 rates by site (N = `r nrow(random)` patients)
+```{r binary_ends_plot}
+
+# overall <- round(table(random$primary)["Yes"] / sum(table(random$primary)), 2)
+
+  cases <- bind_rows(
+    full_join(
+    select(random, site, primary) %>%
+      group_by(site, primary) %>%
+      filter(primary == "Yes") %>%
+      summarise(cases = n()), 
+    select(random, site) %>%
+      group_by(site) %>%
+      summarise(pop = n()) %>%
+      mutate(end = "Primary"),
+    by = "site"),
+    full_join(
+    select(random, site, secondary_1) %>%
+      group_by(site, secondary_1) %>%
+      filter(secondary_1 == "Yes") %>%
+      summarise(cases = n()), 
+    select(random, site) %>%
+      group_by(site) %>%
+      summarise(pop = n()) %>%
+      mutate(end = "S1"),
+    by = "site"), 
+    full_join(
+    select(random, site, secondary_2) %>%
+      group_by(site, secondary_2) %>%
+      filter(secondary_2 == "Yes") %>%
+      summarise(cases = n()), 
+    select(random, site) %>%
+      group_by(site) %>%
+      summarise(pop = n()) %>%
+      mutate(end = "S2"),
+    by = "site")
+    ) %>%
+  mutate(incidence = signif(cases/pop, 2),
+         se = 1/sqrt(cases),
+         ll = signif(exp(log(incidence) - 1.96 * se), 2),
+         ul = signif(exp(log(incidence) + 1.96 * se), 2),
+         ci = paste(ll, " to ", ul)) 
+
+  ggplot(cases, aes(x = end, 
+                    y = incidence, ymax = ul, ymin = ll, color = end)) +
+    geom_pointrange(size = 2) +
+    geom_text_repel(aes(label = incidence), color = "black", min.segment.length = 0, 
+                    nudge_x = 0.3) +
+    facet_wrap(~site, nrow = 1) +
+    scale_color_brewer(guide = FALSE, palette = "Set1") +
+    ylab("Proportion of sample experiencing the endpoint") +
+    xlab("") 
+
+  ggsave("plots/s1s2.png", scale = 0.6, units = "cm", 
+             width = 33.87, height = 19.05)
+    
+  
+```
+
+### SPC, S1C, and S2C counts by site (N = `r nrow(random)` patients)
+```{r counts_ends_plot}
+
+  gather(random, type, value, secondary_pcount:secondary_2count) %>%
+    mutate(value = factor(value, levels = rev(levels(factor(value))))) %>%
+    mutate(type = factor(type, labels = c("S1C", "S2C", "SPC"))) %>%
+    filter(!is.na(value)) %>%
+  ggplot(aes(fill = factor(value), x = site)) +
+    geom_bar(position = "fill") +
+    theme_minimal() +
+    ylab("Proportion") +
+    xlab("Site") + 
+    theme(panel.grid = element_blank()) +
+    scale_fill_viridis("Number of events", discrete = TRUE) +
+    facet_wrap(~type, ncol = 1)
+
+  ggsave("plots/counts.png", scale = 0.6, units = "cm", 
+             width = 33.87, height = 19.05)
+```
+

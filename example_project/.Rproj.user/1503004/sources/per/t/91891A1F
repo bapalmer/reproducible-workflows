@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1540834273512.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2273919736",
+    "id" : "91891A1F",
+    "lastKnownWriteTime" : 1540830768,
+    "last_content_update" : 1540830768,
+    "path" : "~/R_Users_Workshop/T_L_workshop/reproducible-workflows/Example_project/scripts/03_eg_analysis.R",
+    "project_path" : "scripts/03_eg_analysis.R",
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

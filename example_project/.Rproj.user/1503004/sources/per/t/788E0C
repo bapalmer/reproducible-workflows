@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1540834130711.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1034560225",
+    "id" : "788E0C",
+    "lastKnownWriteTime" : 1540834551,
+    "last_content_update" : 1540834551634,
+    "path" : "~/R_Users_Workshop/T_L_workshop/reproducible-workflows/Example_project/all_together_now.Rmd",
+    "project_path" : "all_together_now.Rmd",
+    "properties" : {
+        "cursorPosition" : "3,17",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

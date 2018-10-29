@@ -1,0 +1,408 @@
+[0m[0K]0;:/c/Users/bpalmer/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows[?25l
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git c[0K[?25hl[0Ko[0Kn[0Ke[0K[13G[?25l$ git clone ^V[0K[?25h[?25l$ git clone[0K[13G[?25h[12G[13G[?25l$ git clone https://github.com/bapalmer/reproducible-workflows.git[0K[?25h[?25l
+[0K[?25hCloning into 'reproducible-workflows'...[0K[?25l
+[0K[?25hremote: Enumerating objects: 4, done.[0K[?25l
+remote: Counting objects: 100% (4/4), done.[0K
+remote: Compressing objects: 100% (3/3), done.[0K
+[0K[?25hremote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0[0K[?25l
+[0K[?25h[?25lUnpacking objects:  75% (3/4)[0K[1G[?25hUnpacking objects: 100% (4/4), done.[0K[?25l
+[0K[?25h[?25l
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ c[0K[?25hd[0K[6G[?25l$ cd r[0K[?25he[0Kp[0Kr[0Koducible-workflows[0K[?25l
+[0K[?25h]0;:/c/Users/bpalmer/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflows[?25l
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflows[0;36m (maste[0Kr
+)[0m[0K
+$[0K[3G[?25h[?25l$ l[0K[?25hs[0K[?25l
+[0K[?25hLICENSE  README.md[0K[?25l
+[0K[?25h[?25l
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflows[0;36m (maste[0Kr
+)[0m[0K
+$[0K[3G[?25h[?25l$ h[0K[?25he[0K[?25la[0K[5G[?25h[6G[?25l$ head[0K[?25h[8G[?25l$ head R[0K[?25hE[0KA[0KDME.md[0K[18G[?25l
+[0K[?25h# reproducible-workflows[0K[?25l
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflows[0;36m (maste[0Kr
+)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git s[0K[?25hh[0Ko[0Kw[0K[12G[?25l$ git show s[0K[?25hh[0K[?25l$ git show s[0K[?25h[?25l$ git show[0K[12G[?25h[11G[?25l$ git sho[0K[?25h[?25l$ git sh[0K[?25h[?25l$ git s[0K[?25h[?25l$ git[0K[7G[?25h[?25l$ git r[0K[?25he[0Km[0Ko[0Kt[0Ke[0K[14G[?25l$ git remote s[0K[?25hh[0Ko[0Kw[0K[19G[?25l$ git remote show o[0K[?25hr[0Ki[0Kg[0Ki[0Kn[0K[?25l
+[0K[?25h* remote origin[0K[?25l
+  Fetch URL: https://github.com/bapalmer/reproducible-workflows.git[0K
+  Push  URL: https://github.com/bapalmer/reproducible-workflows.git[0K
+  HEAD branch: master[0K
+  Remote branch:[0K
+    master tracked[0K
+  Local branch configured for 'git pull':[0K
+    master merges with remote master[0K
+  Local ref configured for 'git push':[0K
+    master pushes to master (up to date)[0K
+[0K[?25h[?25l
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflows[0;36m (maste[0Kr
+)[0m[0K
+$[0K[3G[?25h[?25l$ e[0K[?25hc[0Kh[0Ko[0K[8G[?25l$ echo "[0K[?25hT[0Kh[0Ke[0K[13G[?25l$ echo "The g[0K[?25h[?25lo[0K[14G[?25h[15G[?25l$ echo "The goa[0K[?25hl[0K[18G[?25l$ echo "The goal o[0K[18G[?25h[19G[?25l$ echo "The goal of[0K[?25h[21G[?25l$ echo "The goal of t[0K[?25hh[0Ki[0Ks[0K[26G[?25l$ echo "The goal of this w[0K[?25ho[0Kr[0Kk[0Ks[0Kh[0Ko[0Kp[0K[35G[?25l$ echo "The goal of this workshop i[0K[?25hs[0K[38G[?25l$ echo "The goal of this workshop is t[0K[?25hp[0K[41G[40G[?25l$ echo "The goal of this workshop is t[0K[?25ho[0K[41G[?25l$ echo "The goal of this workshop is to h[0K[?25he[0Kl[0Kp[0K[46G[?25l$ echo "The goal of this workshop is to help j[0K[?25hu[0K[?25l$ echo "The goal of this workshop is to help j[0K[?25h[?25l$ echo "The goal of this workshop is to help[0K[46G[?25h[?25l$ echo "The goal of this workshop is to help y[0K[?25ho[0Ku[0K,[0K[51G[?25l$ echo "The goal of this workshop is to help you, o[0K[?25hr[0K[54G[?25l$ echo "The goal of this workshop is to help you, or m[0K[?25ho[0Kr[0Ke[0Ks[0K[60G[?25l$ echo "The goal of this workshop is to help you, or mores t[0K[?25ho[0K[63G[?25l$ echo "The goal of this workshop is to help you, or mores to t[0K[?25hh[0Ke[0K[67G[?25l$ echo "The goal of this workshop is to help you, or mores to the p[0K[?25ho[0Ki[0Kn[0Kn[0Kt[0K[?25l$ echo "The goal of this workshop is to help you, or mores to the poinn[0K[?25h[?25l$ echo "The goal of this workshop is to help you, or mores to the poin[0K[?25ht[0K,[0K[74G[?25l$ echo "The goal of this workshop is to help you, or mores to the point, y[0K[?25ho[0Ku[0Kr[0K[79G[?25l$ echo "The goal of this workshop is to help you, or mores to the point, your f[0K[?25hu[0Kt[0Ku[0Kr[0Ke[0K[86G[?25l$ echo "The goal of this workshop is to help you, or mores to the point, your future s[0K[?25he[0Kl[0Kf[0K![0K"[0K[93G[?25l$ echo "The goal of this workshop is to help you, or mores to the point, your future self!" >[0K[?25h>[0K[96G[?25l$ echo "The goal of this workshop is to help you, or mores to the point, your future self!" >> R[0K[?25hE[0KA[0KD[0KM[0KE[0K[?25l.[0K[102G[?25h[103G[?25l$ echo "The goal of this workshop is to help you, or mores to the point, your future self!" >> README.m[0K[?25hd[0K[?25l
+[0K[?25h[?25l
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflows[0;36m (maste[0Kr
+)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git s[0K[?25ht[0Ka[0Kt[0Ku[0Ks[0K[?25l
+[0K[?25hOn branch master[0K[?25l
+Your branch is up to date with 'origin/master'.[0K
+[0K
+Changes not staged for commit:[0K
+  (use "git add <file>..." to update what will be committed)[0K
+  (use "git checkout -- <file>..." to discard changes in working directory)[0K
+[0K
+        [0;31mmodified:   README.md[0m[0K
+[0K
+no changes added to commit (use "git add" and/or "git commit -a")[0K
+[0K[?25h[?25l
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflows[0;36m (maste[0Kr
+)[0m[0K
+$[0K[3G[?25h[?25l[46A[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows[0;36m (master)[0K
+[0m$ cd reproducible-workflows[0K
+[0K
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflo[0Kw
+s[0;36m (master)[0K
+[0m$ ls[0K
+LICENSE  README.md[0K
+[0K
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflo[0Kw
+s[0;36m (master)[0K
+[0m$ head README.md[0K
+# reproducible-workflows[0K
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflo[0Kw
+s[0;36m (master)[0K
+[0m$ git remote show origin[0K
+* remote origin[0K
+  Fetch URL: https://github.com/bapalmer/reproducible-workflows.git[0K
+  Push  URL: https://github.com/bapalmer/reproducible-workflows.git[0K
+  HEAD branch: master[0K
+  Remote branch:[0K
+    master tracked[0K
+  Local branch configured for 'git pull':[0K
+    master merges with remote master[0K
+  Local ref configured for 'git push':[0K
+    master pushes to master (up to date)[0K
+[0K
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflo[0Kw
+s[0;36m (master)[0K
+[0m$ echo "The goal of this workshop is to help you, or mores to the point, your future self!" >> README.[0Km
+d[0K
+[0K
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflo[0Kw
+s[0;36m (master)[0K
+[0m$ git status[0K
+On branch master[0K
+Your branch is up to date with 'origin/master'.[0K
+[0K
+Changes not staged for commit:[0K
+  (use "git add <file>..." to update what will be committed)[0K
+  (use "git checkout -- <file>..." to discard changes in working directory)[0K
+[0K
+        [0;31mmodified:   README.md[0K
+[0m[0K
+no changes added to commit (use "git add" and/or "git commit -a")[0K
+[0K
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflo[0Kw
+s[0;36m (master)[0K
+[0m$[0K[3G[?25h[?25l[47A[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows[0;36m (master)[0K
+[0m$ cd reproducible-workflows[0K
+[0K
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflow[0Ks
+[0;36m (master)[0K
+[0m$ ls[0K
+LICENSE  README.md[0K
+[0K
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflow[0Ks
+[0;36m (master)[0K
+[0m$ head README.md[0K
+# reproducible-workflows[0K
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflow[0Ks
+[0;36m (master)[0K
+[0m$ git remote show origin[0K
+* remote origin[0K
+  Fetch URL: https://github.com/bapalmer/reproducible-workflows.git[0K
+  Push  URL: https://github.com/bapalmer/reproducible-workflows.git[0K
+  HEAD branch: master[0K
+  Remote branch:[0K
+    master tracked[0K
+  Local branch configured for 'git pull':[0K
+    master merges with remote master[0K
+  Local ref configured for 'git push':[0K
+    master pushes to master (up to date)[0K
+[0K
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflow[0Ks
+[0;36m (master)[0K
+[0m$ echo "The goal of this workshop is to help you, or mores to the point, your future self!" >> README.m[0Kd
+[0K
+[0K
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflow[0Ks
+[0;36m (master)[0K
+[0m$ git status[0K
+On branch master[0K
+Your branch is up to date with 'origin/master'.[0K
+[0K
+Changes not staged for commit:[0K
+  (use "git add <file>..." to update what will be committed)[0K
+  (use "git checkout -- <file>..." to discard changes in working directory)[0K
+[0K
+        [0;31mmodified:   README.md[0K
+[0m[0K
+no changes added to commit (use "git add" and/or "git commit -a")[0K
+[0K
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflow[0Ks
+[0;36m (master)[0K
+[0m$[0K[3G[?25h[?25l[47A[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows[0;36m (master)[0K
+[0m$ cd reproducible-workflows[0K
+[0K
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflows[0;36m (master)[0K
+[0m$ ls[0K
+LICENSE  README.md[0K
+[0K
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflows[0;36m (master)[0K
+[0m$ head README.md[0K
+# reproducible-workflows[0K
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflows[0;36m (master)[0K
+[0m$ git remote show origin[0K
+* remote origin[0K
+  Fetch URL: https://github.com/bapalmer/reproducible-workflows.git[0K
+  Push  URL: https://github.com/bapalmer/reproducible-workflows.git[0K
+  HEAD branch: master[0K
+  Remote branch:[0K
+    master tracked[0K
+  Local branch configured for 'git pull':[0K
+    master merges with remote master[0K
+  Local ref configured for 'git push':[0K
+    master pushes to master (up to date)[0K
+[0K
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflows[0;36m (master)[0K
+[0m$ echo "The goal of this workshop is to help you, or mores to the point, your future self!" >> README.md[0K
+[0K
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflows[0;36m (master)[0K
+[0m$ git status[0K
+On branch master[0K
+Your branch is up to date with 'origin/master'.[0K
+[0K
+Changes not staged for commit:[0K
+  (use "git add <file>..." to update what will be committed)[0K
+  (use "git checkout -- <file>..." to discard changes in working directory)[0K
+[0K
+        [0;31mmodified:   README.md[0K
+[0m[0K
+no changes added to commit (use "git add" and/or "git commit -a")[0K
+[0K
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflows[0;36m (master)[0K
+[0m$[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K[7A[3G[?25h[?25l$ g[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K[7A[4G[?25h[?25l$ gi[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K[7A[5G[?25h[?25l$ git[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K[7A[6G[?25h[7G[?25l$ git a[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K[7A[8G[?25h[?25l$ git ad[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K[7A[9G[?25h[?25l$ git add[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K[7A[10G[?25h[11G[?25l$ git add -[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K[7A[12G[?25h[?25l$ git add -A[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K
+[0K[7A[13G[?25h[?25l
+[?25hwarning: LF will be replaced by CRLF in README.md.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+[0K
+[0K
+[0K
+[0K
+[0K[4A[?25h[?25l
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflows[0;36m (master)[0m[0K
+$[0K
+[0K
+[0K[2A[3G[?25h[?25l$ g[0K
+[0K
+[0K[2A[4G[?25h[?25l$ gi[0K
+[0K
+[0K[2A[5G[?25h[?25l$ git[0K
+[0K
+[0K[2A[6G[?25h[7G[?25l$ git c[0K
+[0K
+[0K[2A[8G[?25h[?25l$ git co[0K
+[0K
+[0K[2A[9G[?25h[?25l$ git com[0K
+[0K
+[0K[2A[10G[?25h[?25l$ git comm[0K
+[0K
+[0K[2A[11G[?25h[?25l$ git commi[0K
+[0K
+[0K[2A[12G[?25h[?25l$ git commit[0K
+[0K
+[0K[2A[13G[?25h[14G[?25l$ git commit -[0K
+[0K
+[0K[2A[15G[?25h[?25l$ git commit -m[0K
+[0K
+[0K[2A[16G[?25h[17G[?25l$ git commit -m "[0K
+[0K
+[0K[2A[18G[?25h[?25l$ git commit -m "I[0K
+[0K
+[0K[2A[19G[?25h[?25l$ git commit -m "In[0K
+[0K
+[0K[2A[20G[?25h[?25l$ git commit -m "Ini[0K
+[0K
+[0K[2A[21G[?25h[?25l$ git commit -m "Init[0K
+[0K
+[0K[2A[22G[?25h[?25l$ git commit -m "Initi[0K
+[0K
+[0K[2A[23G[?25h[?25l$ git commit -m "Initia[0K
+[0K
+[0K[2A[24G[?25h[?25l$ git commit -m "Initial[0K
+[0K
+[0K[2A[25G[?25h[26G[?25l$ git commit -m "Initial c[0K
+[0K
+[0K[2A[27G[?25h[?25l$ git commit -m "Initial ch[0K
+[0K
+[0K[2A[28G[?25h[?25l$ git commit -m "Initial cha[0K
+[0K
+[0K[2A[29G[?25h[?25l$ git commit -m "Initial chan[0K
+[0K
+[0K[2A[30G[?25h[?25l$ git commit -m "Initial chang[0K
+[0K
+[0K[2A[31G[?25h[?25l$ git commit -m "Initial change[0K
+[0K
+[0K[2A[32G[?25h[?25l$ git commit -m "Initial changes[0K
+[0K
+[0K[2A[33G[?25h[34G[?25l$ git commit -m "Initial changes t[0K
+[0K
+[0K[2A[35G[?25h[?25l$ git commit -m "Initial changes to[0K
+[0K
+[0K[2A[36G[?25h[37G[?25l$ git commit -m "Initial changes to b[0K
+[0K
+[0K[2A[38G[?25h[?25l$ git commit -m "Initial changes to be[0K
+[0K
+[0K[2A[39G[?25h[40G[39G[?25l$ git commit -m "Initial changes to b[0K
+[0K
+[0K[2A[39G[?25h[38G[?25l$ git commit -m "Initial changes to[0K
+[0K
+[0K[2A[37G[?25h[36G[?25l$ git commit -m "Initial changes t[0K
+[0K
+[0K[2A[35G[?25h[?25l$ git commit -m "Initial changes[0K
+[0K
+[0K[2A[34G[?25h[?25l$ git commit -m "Initial changes m[0K
+[0K
+[0K[2A[35G[?25h[?25l$ git commit -m "Initial changes ma[0K
+[0K
+[0K[2A[36G[?25h[?25l$ git commit -m "Initial changes mad[0K
+[0K
+[0K[2A[37G[?25h[?25l$ git commit -m "Initial changes made[0K
+[0K
+[0K[2A[38G[?25h[39G[?25l$ git commit -m "Initial changes made t[0K
+[0K
+[0K[2A[40G[?25h[?25l$ git commit -m "Initial changes made to[0K
+[0K
+[0K[2A[41G[?25h[42G[?25l$ git commit -m "Initial changes made to R[0K
+[0K
+[0K[2A[43G[?25h[?25l$ git commit -m "Initial changes made to RE[0K
+[0K
+[0K[2A[44G[?25h[?25l$ git commit -m "Initial changes made to REA[0K
+[0K
+[0K[2A[45G[?25h[?25l$ git commit -m "Initial changes made to READ[0K
+[0K
+[0K[2A[46G[?25h[?25l$ git commit -m "Initial changes made to READM[0K
+[0K
+[0K[2A[47G[?25h[?25l$ git commit -m "Initial changes made to README[0K
+[0K
+[0K[2A[48G[?25h[?25l$ git commit -m "Initial changes made to README"[0K
+[0K
+[0K[2A[49G[?25h[?25l
+[?25h[master f46b3da] Initial changes made to README[0K[?25l
+ 1 file changed, 1 insertion(+), 1 deletion(-)[0K
+[0K[?25h[?25l
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflows[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git p[0K[?25hu[0Ks[0Kh[0K[?25l
+[0K[?25hEnumerating objects: 5, done.[0K[?25l
+Counting objects: 100% (5/5), done.[0K
+Delta compression using up to 8 threads.[0K
+Compressing objects: 100% (3/3), done.[0K
+Writing objects: 100% (3/3), 383 bytes | 383.00 KiB/s, done.[0K
+Total 3 (delta 0), reused 0 (delta 0)[0K
+[0K[?25hTo https://github.com/bapalmer/reproducible-workflows.git[0K[?25l
+   dc622ed..f46b3da  master -> master[0K
+[0K[?25h[?25l
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflows[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git r[0K[?25he[0Km[0Ko[0Kv[0K[?25l$ git remo[0K[?25ht[0Ke[0K[14G[?25l$ git remote -[0K[?25hv[0K[?25l
+[0K[?25horigin  https://github.com/bapalmer/reproducible-workflows.git (fetch)[0K[?25l
+origin  https://github.com/bapalmer/reproducible-workflows.git (push)[0K
+[0K[?25h[?25l
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflows[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git b[0K[?25hr[0Ka[0Kn[0Kc[0Kh[0K[14G[?25l$ git branch -[0K[?25hv[0Kv[0K[?25l
+[0K[?25h* [0;32mmaster[0m f46b3da [[0;34morigin/master[0m] Initial changes made to README[0K[?25l
+[0K[?25h[?25l
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflows[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git -[0K[?25h-[0Kv[0Ke[0Kr[0Ks[0Ki[0Ko[0Kn[0K[?25l
+[0K[?25hgit version 2.18.0.windows.1[0K[?25l
+[0K[?25h[?25l
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows/reproducible-workflows[0;36m (master)[0m[0K
+$[0K[3G[?25h[0m[0K]0;:/c/Users/bpalmer/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows[?25l
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows[0;36m (master)[0m[0K
+[?25l$ g[0K[?25hi[0Kt[0K[7G[?25l$ git s[0K[?25ht[0Ka[0Kt[0Ku[0Ks[0K[?25l
+[0K[?25hOn branch master[0K[?25l
+Your branch is up to date with 'origin/master'.[0K
+[0K
+Untracked files:[0K
+  (use "git add <file>..." to include in what will be committed)[0K
+[0K
+        [0;31m.Rproj.user/[0m[0K
+        [0;31m01_RMarkdown_intro.Rmd[0m[0K
+        [0;31mafternoon_session/[0m[0K
+        [0;31mexample_project/[0m[0K
+        [0;31mmorning_session/[0m[0K
+        [0;31mreproducible-workflows.Rproj[0m[0K
+[0K
+nothing added to commit but untracked files present (use "git add" to track)[0K
+[0K[?25h[?25l
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ git add -A[0K[?25h[?25l
+[0K[?25h

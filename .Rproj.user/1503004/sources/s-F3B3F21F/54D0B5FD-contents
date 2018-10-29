@@ -1,0 +1,39 @@
+---
+title: "All together now"
+author: "BP"
+date: "29 October 2018"
+output: html_document
+---
+
+```{r packages and setup, include = FALSE}
+
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, 
+                      fig.width  = 6, fig.height = 4)
+
+# The clean data file is called within each of the plots and analysis scripts
+# source("example_project/scripts/03_pm_clean_data.R")
+  
+library(tidyverse)
+library(readxl)
+
+```
+
+```{r Plots, include = FALSE}
+
+source("scripts/02_eg_plots.R")
+
+# The location of the Rmd file dictates whether the path to other files is successful
+
+```
+
+```{r Analysis, include = FALSE}
+
+source("scripts/03_eg_analysis.R")
+
+```
+
+```{r}
+who_ire
+# Using everything we've learnt, let's try and pull it all together in this R Markdown file summarising our days work. 
+
+```
