@@ -405,4 +405,597 @@ nothing added to commit but untracked files present (use "git add" to track)[0K
 [0K[?25h[?25l
 [0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows[0;36m (master)[0m[0K
 $[0K[3G[?25h[?25l$ git add -A[0K[?25h[?25l
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/pcs/files-pane.pper.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/pcs/source-pane.pper.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/pcs/source-window.pper.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/pcs/windowlayoutstate.pper.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/pcs/workbench-pane.pper.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/rmd-outputs.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/1E68FE30.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/2020E4E8.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/2186C93F.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/240F246D.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/248E2C9B.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/288CC19D.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/2CA13B0C.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/2EC0F272.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/31E96E4A.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/330F6CA0.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/3500DB10.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/3AB8AA6F.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/3D126D70.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/42EDFA49.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/43B60417.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/44A89EDF.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/48171950.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/49CBB646.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/4A6D2DA0.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/4AD16BBB.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/4D7A51AD.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/4F5B169E.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/509CEE55.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/50F7212F.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/51FDA2F3.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/5288389B.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/52BD921D.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/555F3C80.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/55F60237.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/5D8360A4.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/5E429481.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/5F3F54EA.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/667429F0.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/6717D00E.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/6BF3BB33.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/726A6276.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/7569514D.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/764DC5E2.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/7A348F33.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/7D1729B5.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/7DA36969.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/7E497BC5.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/7EED4EF3.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/82DCE345.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/8393A7E1.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/8C27FE0C.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/8C71309C.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/8CF1365F.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/8CF9E423.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/8FEC26D3.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/92028C9B.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/92DCCFDA.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/94BEF2D8.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/9B1CA7C8.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/9BD06344.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/9ECB67A9.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/A608819A.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/B80E4562.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/BDBA57CE.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/C163BA77.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/C1EC7B84.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/C2F22E25.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/C8EDA831.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/C9E12CC.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/CD37FAE3.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/CF65D160.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/D37548F3.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/D6F1595F.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/D7CF4ACD.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/DB5C2E3B.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/DC0F01B.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/DDEC47F4.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/E25BE926.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/E2BE1C50.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/E3D4A1F.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/E5DBAD4A.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/EACBBB38.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/EC9793B6.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/ED54ADE0.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/ED5AAFC7.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/EEE0847C.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/F590B65A.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/FC76031F.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/FD1BD58B.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/FEA45E8A.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/FF34417B.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/prop/INDEX.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/1341E5DD-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/17FE1568-contents.[0K[61G[?25h[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/1A656835-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/1FB3720B-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/31E89777-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/32F0151B-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/41F8AEAE-contents.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/47A6CF71-contents.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/4F66C941-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/53A8E0EA-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/54D0B5FD-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/56F8EF5B-contents.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/5736D3B0-contents.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/6162F544-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/6CCED45B-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/7B469644-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/919B8600-contents.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/99A0CBB-contents.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/A94ACFBF-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/BFCA5915-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/C287C981-contents.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/CB27B69D-contents.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/D22592B9-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/D2EAFB5F-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/D8B83509-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/D90D5EF0-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/D9A900E3-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/DCCFEA6E-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/E10B4848-contents.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/EAEFA54A-contents.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/EB83C8D5-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/ECD94ABE-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/EDE38F8D-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/EE407C45-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/1503004/sources/s-F3B3F21F/F84BE285-contents.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/shared/notebooks/6C8271A6-01-RMarkdown_intro/1/s/cxtzg7bosn98j/000002.csv.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/shared/notebooks/B3E4967-01_RMarkdown_intro/1/s/cxtzg7bosn98j/000002.csv.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in .Rproj.user/shared/notebooks/EF883FD9-01_RMarkdown_intro/1/s/cxtzg7bosn98j/000002.csv.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in .Rproj.user/shared/notebooks/paths.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in afternoon_session/data/2018-10-28_clean_brauer_data.csv.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in afternoon_session/data/2018-10-29_clean_who_tb_data.csv.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in afternoon_session/data/raw_data/brauer_data.csv.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in example_project/.Rproj.user/1503004/pcs/files-pane.pper.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in example_project/.Rproj.user/1503004/pcs/source-pane.pper.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in example_project/.Rproj.user/1503004/pcs/windowlayoutstate.pper.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in example_project/.Rproj.user/1503004/pcs/workbench-pane.pper.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in example_project/.Rproj.user/1503004/rmd-outputs.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in example_project/.Rproj.user/1503004/sources/per/t/788E0C.[0K[53G[?25h[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in example_project/.Rproj.user/1503004/sources/per/t/788E0C-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in example_project/.Rproj.user/1503004/sources/per/t/91891A1F.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in example_project/.Rproj.user/1503004/sources/per/t/91891A1F-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in example_project/.Rproj.user/1503004/sources/per/t/EC093EFB.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in example_project/.Rproj.user/1503004/sources/per/t/EC093EFB-contents.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in example_project/.Rproj.user/1503004/sources/prop/353AB99E.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in example_project/.Rproj.user/1503004/sources/prop/4F0BE748.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in example_project/.Rproj.user/1503004/sources/prop/6004422B.[0K
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in example_project/.Rproj.user/1503004/sources/prop/9ADCC4F2.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in example_project/.Rproj.user/1503004/sources/prop/D4C75B74.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+warning: LF will be replaced by CRLF in example_project/.Rproj.user/1503004/sources/prop/INDEX.[0K
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in example_project/.Rproj.user/shared/notebooks/paths.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in morning_session/data/brauer_data.csv.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in morning_session/data/clean_brauer_data.csv.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in morning_session/data/clean_eaa13.csv.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+[0K[?25hwarning: LF will be replaced by CRLF in morning_session/data/clean_who_tb_data.csv.[0K[?25l
+The file will have its original line endings in your working directory.[0K
+[0K[?25h[?25l
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ git commit -m "A commit from my local computer"[0K[?25h[49G[48G[?25l$ git commit -m "A commit from my local computr"[0K[47G[?25h[?25l$ git commit -m "A commit from my local compur"[0K[46G[?25h[?25l$ git commit -m "A commit from my local compr"[0K[45G[?25h[?25l$ git commit -m "A commit from my local comr"[0K[44G[?25h[?25l$ git commit -m "A commit from my local cor"[0K[43G[?25h[?25l$ git commit -m "A commit from my local cr"[0K[43G[?25h[?25l$ git commit -m "A commit from my local r"[0K[41G[?25h[?25l$ git commit -m "A commit from my locar"[0K[39G[?25h[?25l$ git commit -m "A commit from my locr"[0K[38G[?25h[?25l$ git commit -m "A commit from my lr"[0K[36G[?25h[?25l$ git commit -m "A commit from my r"[0K[35G[?25h[?25l$ git commit -m "A commit from myr"[0K[34G[?25h[?25l$ git commit -m "A commit from mr"[0K[33G[?25h[?25l$ git commit -m "A commit from r"[0K[32G[?25h[?25l$ git commit -m "A commit fromr"[0K[31G[?25h[?25l$ git commit -m "A commit fror"[0K[30G[?25h[?25l$ git commit -m "A commit frr"[0K[29G[?25h[?25l$ git commit -m "A commit fr"[0K[28G[?25h[?25l$ git commit -m "A commit r"[0K[27G[?25h[?25l$ git commit -m "A commir"[0K[25G[?25h[?25l$ git commit -m "A commr"[0K[25G[?25h[24G[?25l$ git commit -m "A comr"[0K[23G[?25h[?25l$ git commit -m "A cor"[0K[22G[?25h[?25l$ git commit -m "A cr"[0K[21G[?25h[?25l$ git commit -m "A r"[0K[20G[?25h[?25l$ git commit -m "Ar"[0K[19G[?25h[?25l$ git commit -m "r"[0K[18G[?25h[?25l$ git commit -m "Fr"[0K[19G[?25h[?25l$ git commit -m "Fur"[0K[20G[?25h[?25l$ git commit -m "Fulr"[0K[21G[?25h[?25l$ git commit -m "Fullr"[0K[22G[?25h[?25l$ git commit -m "Full r"[0K[23G[?25h[?25l$ git commit -m "Full wr"[0K[24G[?25h[?25l$ git commit -m "Full wor"[0K[25G[?25h[?25l$ git commit -m "Full worr"[0K[26G[?25h[?25l$ git commit -m "Full workr"[0K[27G[?25h[?25l$ git commit -m "Full worksr"[0K[28G[?25h[?25l$ git commit -m "Full workshr"[0K[29G[?25h[?25l$ git commit -m "Full workshor"[0K[30G[?25h[?25l$ git commit -m "Full workshopr"[0K[31G[?25h[?25l$ git commit -m "Full workshop r"[0K[32G[?25h[?25l$ git commit -m "Full workshop mr"[0K[33G[?25h[?25l$ git commit -m "Full workshop mar"[0K[34G[?25h[?25l$ git commit -m "Full workshop matr"[0K[35G[?25h[?25l$ git commit -m "Full workshop mater"[0K[36G[?25h[?25l$ git commit -m "Full workshop materr"[0K[37G[?25h[?25l$ git commit -m "Full workshop materir"[0K[38G[?25h[?25l$ git commit -m "Full workshop materiar"[0K[39G[?25h[?25l$ git commit -m "Full workshop materialr"[0K[40G[?25h[?25l$ git commit -m "Full workshop materialsr"[0K[41G[?25h[?25l$ git commit -m "Full workshop materials"[0K[41G[?25h[?25l
+[0K[?25h[master 824df73] Full workshop materials[0K[?25l
+ 222 files changed, 140553 insertions(+)[0K
+ create mode 100644 .Rproj.user/1503004/console06/CF5C89B6[0K
+ create mode 100644 .Rproj.user/1503004/console06/INDEX001[0K
+ create mode 100644 .Rproj.user/1503004/pcs/files-pane.pper[0K
+ create mode 100644 .Rproj.user/1503004/pcs/source-pane.pper[0K
+ create mode 100644 .Rproj.user/1503004/pcs/source-window.pper[0K
+ create mode 100644 .Rproj.user/1503004/pcs/windowlayoutstate.pper[0K
+ create mode 100644 .Rproj.user/1503004/pcs/workbench-pane.pper[0K
+ create mode 100644 .Rproj.user/1503004/rmd-outputs[0K
+ create mode 100644 .Rproj.user/1503004/saved_source_markers[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/1E68FE30[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/2020E4E8[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/2186C93F[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/240F246D[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/248E2C9B[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/288CC19D[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/2CA13B0C[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/2EC0F272[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/31E96E4A[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/330F6CA0[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/3500DB10[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/3AB8AA6F[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/3D126D70[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/42EDFA49[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/43B60417[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/44A89EDF[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/48171950[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/49CBB646[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/4A6D2DA0[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/4AD16BBB[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/4D7A51AD[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/4F5B169E[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/509CEE55[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/50F7212F[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/51FDA2F3[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/5288389B[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/52BD921D[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/555F3C80[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/55F60237[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/5D8360A4[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/5E429481[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/5F3F54EA[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/667429F0[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/6717D00E[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/6BF3BB33[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/726A6276[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/7569514D[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/764DC5E2[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/7A348F33[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/7D1729B5[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/7DA36969[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/7E497BC5[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/7EED4EF3[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/82DCE345[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/8393A7E1[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/8C27FE0C[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/8C71309C[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/8CF1365F[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/8CF9E423[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/8FEC26D3[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/92028C9B[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/92DCCFDA[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/94BEF2D8[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/9B1CA7C8[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/9BD06344[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/9ECB67A9[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/A608819A[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/B80E4562[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/BDBA57CE[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/C163BA77[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/C1EC7B84[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/C2F22E25[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/C8EDA831[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/C9E12CC[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/CD37FAE3[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/CF65D160[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/D37548F3[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/D6F1595F[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/D7CF4ACD[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/DB5C2E3B[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/DC0F01B[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/DDEC47F4[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/E25BE926[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/E2BE1C50[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/E3D4A1F[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/E5DBAD4A[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/EACBBB38[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/EC9793B6[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/ED54ADE0[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/ED5AAFC7[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/EEE0847C[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/F590B65A[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/FC76031F[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/FD1BD58B[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/FEA45E8A[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/FF34417B[0K
+ create mode 100644 .Rproj.user/1503004/sources/prop/INDEX[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/1341E5DD-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/17FE1568-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/1A656835-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/1FB3720B-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/31E89777-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/32F0151B-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/41F8AEAE-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/47A6CF71-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/4F66C941-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/53A8E0EA-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/54D0B5FD-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/56F8EF5B-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/5736D3B0-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/6162F544-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/6CCED45B-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/7B469644-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/919B8600-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/99A0CBB-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/A94ACFBF-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/BB677DC-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/BFCA5915-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/C287C981-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/CB27B69D-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/D22592B9-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/D2EAFB5F-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/D8B83509-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/D90D5EF0-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/D9A900E3-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/DCCFEA6E-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/E10B4848-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/EAEFA54A-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/EB83C8D5-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/ECD94ABE-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/EDE38F8D-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/EE407C45-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/F84BE285-contents[0K
+ create mode 100644 .Rproj.user/1503004/sources/s-F3B3F21F/lock_file[0K
+ create mode 100644 .Rproj.user/shared/notebooks/364F11CE-all_together_now/1/1503004ACCF100B/chunks.json[0K
+ create mode 100644 .Rproj.user/shared/notebooks/364F11CE-all_together_now/1/s/chunks.json[0K
+ create mode 100644 .Rproj.user/shared/notebooks/6C8271A6-01-RMarkdown_intro/1/1503004ACCF100B/chunks.json[0K
+ create mode 100644 .Rproj.user/shared/notebooks/6C8271A6-01-RMarkdown_intro/1/s/chunks.json[0K
+ create mode 100644 .Rproj.user/shared/notebooks/6C8271A6-01-RMarkdown_intro/1/s/cxtzg7bosn98j/000002.csv[0K
+ create mode 100644 .Rproj.user/shared/notebooks/B3E4967-01_RMarkdown_intro/1/1503004ACCF100B/chunks.json[0K
+ create mode 100644 .Rproj.user/shared/notebooks/B3E4967-01_RMarkdown_intro/1/1503004F3B3F21F/chunks.json[0K
+ create mode 100644 .Rproj.user/shared/notebooks/B3E4967-01_RMarkdown_intro/1/s/chunks.json[0K
+ create mode 100644 .Rproj.user/shared/notebooks/B3E4967-01_RMarkdown_intro/1/s/cxtzg7bosn98j/000002.csv[0K
+ create mode 100644 .Rproj.user/shared/notebooks/EF883FD9-01_RMarkdown_intro/1/s/chunks.json[0K
+ create mode 100644 .Rproj.user/shared/notebooks/EF883FD9-01_RMarkdown_intro/1/s/cxtzg7bosn98j/000002.csv[0K
+ create mode 100644 .Rproj.user/shared/notebooks/patch-chunk-names[0K
+ create mode 100644 .Rproj.user/shared/notebooks/paths[0K
+ create mode 100644 01_RMarkdown_intro.Rmd[0K
+ create mode 100644 afternoon_session/data/2018-10-28_clean_brauer_data.csv[0K
+ create mode 100644 afternoon_session/data/2018-10-29_clean_who_tb_data.csv[0K
+ create mode 100644 afternoon_session/data/raw_data/brauer_data.csv[0K
+ create mode 100644 afternoon_session/data/raw_data/sample_data.csv[0K
+ create mode 100644 afternoon_session/data/raw_data/who_tb_data.csv[0K
+ create mode 100644 afternoon_session/docs/2018-10-29_end_of_project_session_info.txt[0K
+ create mode 100644 afternoon_session/docs/rmarkdown-2.0.pdf[0K
+ create mode 100644 afternoon_session/docs/rmarkdown-reference.pdf[0K
+ create mode 100644 afternoon_session/lectures/2018-10-30_pm_01_main_lecture.pdf[0K
+ create mode 100644 afternoon_session/lectures/2018-10-30_pm_02_practical_sessions.pdf[0K
+ create mode 100644 afternoon_session/plots/plot_of_tb_cases_2007.pdf[0K
+ create mode 100644 afternoon_session/plots/plot_of_tb_cases_2007.png[0K
+ create mode 100644 afternoon_session/scripts/01_pm_too_much_choice.R[0K
+ create mode 100644 afternoon_session/scripts/02_pm_good_habits.R[0K
+ create mode 100644 afternoon_session/scripts/03_pm_clean_data.R[0K
+ create mode 100644 afternoon_session/scripts/04_pm_plots.R[0K
+ create mode 100644 afternoon_session/scripts/05_pm_analysis.R[0K
+ create mode 100644 example_project/.Rproj.user/1503004/console06/INDEX001[0K
+ create mode 100644 example_project/.Rproj.user/1503004/pcs/files-pane.pper[0K
+ create mode 100644 example_project/.Rproj.user/1503004/pcs/source-pane.pper[0K
+ create mode 100644 example_project/.Rproj.user/1503004/pcs/windowlayoutstate.pper[0K
+ create mode 100644 example_project/.Rproj.user/1503004/pcs/workbench-pane.pper[0K
+ create mode 100644 example_project/.Rproj.user/1503004/rmd-outputs[0K
+ create mode 100644 example_project/.Rproj.user/1503004/saved_source_markers[0K
+ create mode 100644 example_project/.Rproj.user/1503004/sources/per/t/788E0C[0K
+ create mode 100644 example_project/.Rproj.user/1503004/sources/per/t/788E0C-contents[0K
+ create mode 100644 example_project/.Rproj.user/1503004/sources/per/t/91891A1F[0K
+ create mode 100644 example_project/.Rproj.user/1503004/sources/per/t/91891A1F-contents[0K
+ create mode 100644 example_project/.Rproj.user/1503004/sources/per/t/EC093EFB[0K
+ create mode 100644 example_project/.Rproj.user/1503004/sources/per/t/EC093EFB-contents[0K
+ create mode 100644 example_project/.Rproj.user/1503004/sources/prop/353AB99E[0K
+ create mode 100644 example_project/.Rproj.user/1503004/sources/prop/4F0BE748[0K
+ create mode 100644 example_project/.Rproj.user/1503004/sources/prop/6004422B[0K
+ create mode 100644 example_project/.Rproj.user/1503004/sources/prop/9ADCC4F2[0K
+ create mode 100644 example_project/.Rproj.user/1503004/sources/prop/D4C75B74[0K
+ create mode 100644 example_project/.Rproj.user/1503004/sources/prop/INDEX[0K
+ create mode 100644 example_project/.Rproj.user/shared/notebooks/A2878133-all_together_now/1/1503004AC8951BC/chunks.json[0K
+ create mode 100644 example_project/.Rproj.user/shared/notebooks/A2878133-all_together_now/1/s/chunks.json[0K
+ create mode 100644 example_project/.Rproj.user/shared/notebooks/patch-chunk-names[0K
+ create mode 100644 example_project/.Rproj.user/shared/notebooks/paths[0K
+ create mode 100644 example_project/Example_project.Rproj[0K
+ create mode 100644 example_project/all_together_now.Rmd[0K
+ create mode 100644 example_project/data/raw_data/who_tb_data.csv[0K
+ create mode 100644 example_project/docs/2018-10-29_end_of_project_session_info.txt[0K
+ create mode 100644 example_project/docs/~$-RMarkdown_intro.docx[0K
+ create mode 100644 example_project/scripts/01_eg_clean_data.R[0K
+ create mode 100644 example_project/scripts/02_eg_plots.R[0K
+ create mode 100644 example_project/scripts/03_eg_analysis.R[0K
+ create mode 100644 morning_session/data/EAA13.px[0K
+ create mode 100644 morning_session/data/brauer_data.csv[0K
+ create mode 100644 morning_session/data/brauer_data.xlsx[0K
+ create mode 100644 morning_session/data/clean_brauer_data.csv[0K
+ create mode 100644 morning_session/data/clean_eaa13.csv[0K
+ create mode 100644 morning_session/data/clean_who_tb_data.csv[0K
+ create mode 100644 morning_session/data/who_tb_data.csv[0K
+ create mode 100644 morning_session/docs/01_readr-tibble-tidyr-cheatsheet.pdf[0K
+ create mode 100644 morning_session/docs/02_dplyr-cheatsheet.pdf[0K
+ create mode 100644 morning_session/docs/03_ggplot2-cheatsheet.pdf[0K
+ create mode 100644 morning_session/docs/rstudio-IDE-cheatsheet.pdf[0K
+ create mode 100644 morning_session/docs/syntax-comparison-cheatsheet.pdf[0K
+ create mode 100644 morning_session/docs/tidyverse-beginners-cheatsheet.pdf[0K
+ create mode 100644 morning_session/lectures/2018-10-30_am_01_main_lecture.pdf[0K
+ create mode 100644 morning_session/lectures/2018-10-30_am_02_practical_sessions.pdf[0K
+ create mode 100644 morning_session/plots/leu1_plot.pdf[0K
+ create mode 100644 morning_session/plots/leu1_plot.png[0K
+ create mode 100644 morning_session/plots/my_last_plot.png[0K
+ create mode 100644 morning_session/scripts/01_am_tibbles.R[0K
+ create mode 100644 morning_session/scripts/02_am_readr.R[0K
+ create mode 100644 morning_session/scripts/03_am_tidyr.R[0K
+ create mode 100644 morning_session/scripts/04_am_dplyr.R[0K
+ create mode 100644 morning_session/scripts/05_am_practise.R[0K
+ create mode 100644 morning_session/scripts/06_am_grapics example.R[0K
+ create mode 100644 morning_session/scripts/07_am_ggplot2.R[0K
+ create mode 100644 morning_session/scripts/08_am_practise_plots.R[0K
+ create mode 100644 reproducible-workflows.Rproj[0K
+[0K[?25h[?25l
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ git push[0K[?25h[?25l
+[0K[?25hTo https://github.com/bapalmer/reproducible-workflows.git[0K[?25l
+ [0;31m! [rejected]       [0m master -> master (fetch first)[0K
+[0;31merror: failed to push some refs to 'https://github.com/bapalmer/reproducible-workflows.git'[0m[0K
+[0;33mhint: Updates were rejected because the remote contains work that you do[0m[0K[3G[?25h[?25l
+[0;33mhint: not have locally. This is usually caused by another repository pushing[0m[0K
+[0;33mhint: to the same ref. You may want to first integrate the remote changes[0m[0K
+[0;33mhint: (e.g., 'git pull ...') before pushing again.[0m[0K
+[0;33mhint: See the 'Note about fast-forwards' in 'git push --help' for details.[0m[0K
+[0K[?25h[?25l
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l[0K[3G[?25h[?25l$ git push[0K[?25h[?25l$ git commit -m "Full workshop materials"[0K[?25h[?25l$ git add -A[0K[?25h[?25l$ git status[0K[9G[?25h[13G[?25l$ git add -A[0K[?25h[12G[11G[?25l$ git add A[0K[11G[?25h[?25l$ git add[0K[11G[?25h[?25l$ git add £[0K[?25h[?25l$ git add[0K[11G[?25h[?25l$ git add "[0K[?25hR[0KE[0KA[0KD[0KM[0KE[0K.[0Km[0Kd[0K"[0K[?25l
+[0K[?25hfatal: pathspec 'ÂREADME.md' did not match any files[0K[?25l
+[0K[?25h[?25l
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ git add ▒"README.md"[0K[?25h[?25l$ git add ▒"README.md[0K[?25h[21G[20G[19G[18G[17G[16G[15G[14G[13G[12G[?25l$ git add ▒README.md[0K[12G[?25h[?25l$ git add README.md[0K[11G[?25h[?25l
+[0K[?25h[?25l
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ git add README.md[0K[?25h[?25l$ git add ▒"README.md"[0K[?25h[?25l$ git push[0K[?25h[?25l$ git commit -m "Full workshop materials"[0K[?25h[?25l$ git add -A[0K[42G[?25h[13G[?25l$ git status[0K[8G[?25h[13G[?25l$ git add -A[0K[?25h[?25l$ git commit -m "Full workshop materials"[0K[?25h[41G[40G[?25l$ git commit -m "Full workshop materias"[0K[39G[?25h[?25l$ git commit -m "Full workshop maters"[0K[37G[?25h[?25l$ git commit -m "Full workshop mates"[0K[36G[?25h[?25l$ git commit -m "Full workshop mats"[0K[35G[?25h[?25l$ git commit -m "Full workshop mas"[0K[34G[?25h[?25l$ git commit -m "Full workshop ms"[0K[33G[?25h[?25l$ git commit -m "Full workshops"[0K[31G[?25h[?25l$ git commit -m "Full workshos"[0K[30G[?25h[?25l$ git commit -m "Full workshs"[0K[29G[?25h[?25l$ git commit -m "Full workss"[0K[28G[?25h[?25l$ git commit -m "Full works"[0K[27G[?25h[?25l$ git commit -m "Full wors"[0K[26G[?25h[?25l$ git commit -m "Full wos"[0K[25G[?25h[?25l$ git commit -m "Full ws"[0K[24G[?25h[?25l$ git commit -m "Fulls"[0K[22G[?25h[?25l$ git commit -m "Fuls"[0K[21G[?25h[?25l$ git commit -m "Fus"[0K[21G[?25h[20G[?25l$ git commit -m "Fs"[0K[19G[?25h[?25l$ git commit -m "s"[0K[18G[?25h[?25l$ git commit -m ""[0K[18G[?25h[?25l$ git commit -m "R"[0K[19G[?25h[?25l$ git commit -m "Ra"[0K[20G[?25h[?25l$ git commit -m "Rae"[0K[21G[?25h[?25l$ git commit -m "Ra"[0K[20G[?25h[?25l$ git commit -m "R"[0K[19G[?25h[?25l$ git commit -m "Re"[0K[20G[?25h[?25l$ git commit -m "Rea"[0K[21G[?25h[?25l$ git commit -m "Read"[0K[22G[?25h[?25l$ git commit -m "ReadM"[0K[23G[?25h[?25l$ git commit -m "ReadMe"[0K[24G[?25h[?25l$ git commit -m "ReadMe "[0K[25G[?25h[?25l$ git commit -m "ReadMe u"[0K[26G[?25h[?25l$ git commit -m "ReadMe up"[0K[27G[?25h[?25l$ git commit -m "ReadMe upp"[0K[28G[?25h[?25l$ git commit -m "ReadMe up"[0K[27G[?25h[?25l$ git commit -m "ReadMe upd"[0K[28G[?25h[?25l$ git commit -m "ReadMe upda"[0K[29G[?25h[?25l$ git commit -m "ReadMe updat"[0K[30G[?25h[?25l$ git commit -m "ReadMe update"[0K[30G[?25h[31G[?25l
+[0K[?25h[master 57b099c] ReadMe update[0K[?25l
+ 1 file changed, 6 insertions(+), 1 deletion(-)[0K
+[0K[?25h[?25l
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ git commit -m "ReadMe update"[0K[?25h[?25l$ git add README.md[0K[?25h[?25l$ git add ▒"README.md"[0K[?25h[?25l$ git push[0K[?25h[?25l
+[0K[?25hTo https://github.com/bapalmer/reproducible-workflows.git[0K[?25l
+ [0;31m! [rejected]       [0m master -> master (fetch first)[0K
+[0;31merror: failed to push some refs to 'https://github.com/bapalmer/reproducible-workflows.git'[0m[0K
+[0;33mhint: Updates were rejected because the remote contains work that you do[0m[0K
+[0;33mhint: not have locally. This is usually caused by another repository pushing[0m[0K
+[0;33mhint: to the same ref. You may want to first integrate the remote changes[0m[0K
+[0;33mhint: (e.g., 'git pull ...') before pushing again.[0m[0K
+[0;33mhint: See the 'Note about fast-forwards' in 'git push --help' for details.[0m[0K
+[0K[?25h[?25l
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l
+[0K[?25h[?25l
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows[0;36m (master)[0m[0K
+$[0K[3G[?25h[?25l$ git pull origin master[0K[?25h[?25l
+[0K[?25hremote: Enumerating objects: 3, done.[0K[?25l
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 3[0K
+[0K[?25hUnpacking objects: 100% (3/3), done.[0K[?25l
+[0K[?25hFrom https://github.com/bapalmer/reproducible-workflows[0K[?25l
+ * branch            master     -> FETCH_HEAD[0K
+[0K[?25h   dc622ed..f46b3da  master     -> origin/master[0K[?25l
+[0K[?25hAuto-merging README.md[0K[?25l
+CONFLICT (content): Merge conflict in README.md[0K
+[0K[?25hAutomatic merge failed; fix conflicts and then commit the result.[0K[?25l
+[0K[?25h[?25l
+[0;32mbpalmer@ph-wgb5 [0;35m [0;33m~/Documents/R_Users_Workshop/T_L_workshop/reproducible-workflows[0;36m (master|MERGING)[0m[0K
+$[0K[3G[?25h[?25l$ git pull origin master[0K[?25h[?25l$ git push[0K[?25h[?25l$ git commit -m "ReadMe update"[0K[?25h[?25l$ git add README.md[0K[?25h[?25l$ git add ▒"README.md"[0K[?25h[?25l$ git push[0K[?25h[?25l$ git commit -m "Full workshop materials"[0K[?25h[?25l$ git add -A[0K[?25h[?25l$ git status[0K[?25h[?25l$ git add -A[0K[?25h[?25l
 [0K[?25h
