@@ -21,7 +21,7 @@ who_tb <- read_csv("path to file", arguments)
 # Ensure the data is loaded correctly
 View(who_tb)
 
-# 2. Use gather() to gather the columns starting at new_ep_f014 to new_sp_m2534
+# 2. Use gather() to gather the columns starting at new_ep_f014 to new_sp_m65
 # Call the key column "key" and the value column "cases"
 # Tip: Include the arguemnt na.rm = TRUE
 

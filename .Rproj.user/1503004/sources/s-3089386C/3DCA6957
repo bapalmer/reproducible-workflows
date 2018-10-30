@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1540893217822.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "3DCA6957",
+    "lastKnownWriteTime" : 1540843898,
+    "last_content_update" : 1540843898,
+    "path" : "~/R_Users_Workshop/T_L_workshop/reproducible-workflows/morning_session/scripts/01_am_tibbles.R",
+    "project_path" : "morning_session/scripts/01_am_tibbles.R",
+    "properties" : {
+        "cursorPosition" : "38,0",
+        "scrollLine" : "16"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

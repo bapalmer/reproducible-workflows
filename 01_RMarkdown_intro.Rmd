@@ -7,7 +7,7 @@ output:
   word_document: default
 ---
 
-That first bit was a YAML header (optional). You can control "whole document"" settings by tweaking the YAML header. With YAML, indentation is important, so just keep it simple first as you get up and running. 
+That first bit was a YAML header (optional). You can control "whole document" settings by tweaking the YAML header. With YAML, indentation is important, so just keep it simple first as you get up and running. 
 
 Oh, and this bit right here is just plain text as you would see in any text editor. This next bit is how we include our code within the document.  It starts with three back-ticks, a pair of curly braces, "r" and then ends with three back ticks. The code lies within.
 
@@ -79,7 +79,7 @@ I'm in paragraph three now!
 or
 
 + Item
-+ Anotehr item
++ Another item
 
 or
 
@@ -228,11 +228,11 @@ Personally, I prefer this second option as the document is less cluttered and ch
 
 
 ## Caching 
-Normally each knit of a document starts from a  clean slate. This great for reproducibility, but painful if some computations take a long time to run. You can avoid this by setting `cached = TRUE`. This will save the output of the chunk to a named file on disk. On susequent runs knitr ill check to see if the code has changed, and if it hasn't, will reuse the cached results.
+Normally each knit of a document starts from a  clean slate. This great for reproducibility, but painful if some computations take a long time to run. You can avoid this by setting `cached = TRUE`. This will save the output of the chunk to a named file on disk. On susequent runs knitr will check to see if the code has changed, and if it hasn't, will reuse the cached results.
 
 ## Bibliographies and citations
-Pandoc can automatically generate citations and a bibliography ina number of styles.
+Pandoc can automatically generate citations and a bibliography in a number of styles.
 
 This is just as an FYI. We won't be able to cover it here. 
 
-Now , we'll close this project and move to the example_project folder
+Now, we'll close this project and move to the example_project folder

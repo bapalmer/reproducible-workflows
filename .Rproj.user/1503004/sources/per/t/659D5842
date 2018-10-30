@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1540899594374.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2468579236",
+    "id" : "659D5842",
+    "lastKnownWriteTime" : 1540935413,
+    "last_content_update" : 1540935413543,
+    "path" : "~/R_Users_Workshop/T_L_workshop/reproducible-workflows/morning_session/scripts/04_am_dplyr.R",
+    "project_path" : "morning_session/scripts/04_am_dplyr.R",
+    "properties" : {
+        "cursorPosition" : "78,9",
+        "scrollLine" : "67"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
