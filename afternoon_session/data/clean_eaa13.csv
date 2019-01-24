@@ -1,0 +1,129 @@
+Year,Statistic,State,value
+2000,Trade Imports (Million Tonnes),State,31.9
+2001,Trade Imports (Million Tonnes),State,31.7
+2002,Trade Imports (Million Tonnes),State,34.3
+2003,Trade Imports (Million Tonnes),State,33
+2004,Trade Imports (Million Tonnes),State,36.7
+2005,Trade Imports (Million Tonnes),State,37.5
+2006,Trade Imports (Million Tonnes),State,38.8
+2007,Trade Imports (Million Tonnes),State,42.3
+2008,Trade Imports (Million Tonnes),State,38.9
+2009,Trade Imports (Million Tonnes),State,33.4
+2010,Trade Imports (Million Tonnes),State,35.8
+2011,Trade Imports (Million Tonnes),State,34.9
+2012,Trade Imports (Million Tonnes),State,34.8
+2013,Trade Imports (Million Tonnes),State,36.6
+2014,Trade Imports (Million Tonnes),State,36.4
+2015,Trade Imports (Million Tonnes),State,39.1
+2000,Trade Imports - Raw Products (Million Tonnes),State,11.8
+2001,Trade Imports - Raw Products (Million Tonnes),State,12.7
+2002,Trade Imports - Raw Products (Million Tonnes),State,12.3
+2003,Trade Imports - Raw Products (Million Tonnes),State,12.4
+2004,Trade Imports - Raw Products (Million Tonnes),State,14.2
+2005,Trade Imports - Raw Products (Million Tonnes),State,15.2
+2006,Trade Imports - Raw Products (Million Tonnes),State,14.7
+2007,Trade Imports - Raw Products (Million Tonnes),State,17.7
+2008,Trade Imports - Raw Products (Million Tonnes),State,16.8
+2009,Trade Imports - Raw Products (Million Tonnes),State,14.7
+2010,Trade Imports - Raw Products (Million Tonnes),State,16.5
+2011,Trade Imports - Raw Products (Million Tonnes),State,16.4
+2012,Trade Imports - Raw Products (Million Tonnes),State,16.6
+2013,Trade Imports - Raw Products (Million Tonnes),State,17.7
+2014,Trade Imports - Raw Products (Million Tonnes),State,16.8
+2015,Trade Imports - Raw Products (Million Tonnes),State,18.5
+2000,Trade Imports - Semi Manufactured Products (Million Tonnes),State,7.2
+2001,Trade Imports - Semi Manufactured Products (Million Tonnes),State,6.2
+2002,Trade Imports - Semi Manufactured Products (Million Tonnes),State,6.8
+2003,Trade Imports - Semi Manufactured Products (Million Tonnes),State,6.6
+2004,Trade Imports - Semi Manufactured Products (Million Tonnes),State,7.7
+2005,Trade Imports - Semi Manufactured Products (Million Tonnes),State,6.1
+2006,Trade Imports - Semi Manufactured Products (Million Tonnes),State,7.2
+2007,Trade Imports - Semi Manufactured Products (Million Tonnes),State,7.3
+2008,Trade Imports - Semi Manufactured Products (Million Tonnes),State,6.1
+2009,Trade Imports - Semi Manufactured Products (Million Tonnes),State,4.4
+2010,Trade Imports - Semi Manufactured Products (Million Tonnes),State,4.7
+2011,Trade Imports - Semi Manufactured Products (Million Tonnes),State,4.5
+2012,Trade Imports - Semi Manufactured Products (Million Tonnes),State,4.4
+2013,Trade Imports - Semi Manufactured Products (Million Tonnes),State,5.2
+2014,Trade Imports - Semi Manufactured Products (Million Tonnes),State,5.1
+2015,Trade Imports - Semi Manufactured Products (Million Tonnes),State,5.5
+2000,Trade Imports - Finished Products (Million Tonnes),State,13
+2001,Trade Imports - Finished Products (Million Tonnes),State,12.7
+2002,Trade Imports - Finished Products (Million Tonnes),State,15.2
+2003,Trade Imports - Finished Products (Million Tonnes),State,14
+2004,Trade Imports - Finished Products (Million Tonnes),State,14.8
+2005,Trade Imports - Finished Products (Million Tonnes),State,16.2
+2006,Trade Imports - Finished Products (Million Tonnes),State,16.8
+2007,Trade Imports - Finished Products (Million Tonnes),State,17.3
+2008,Trade Imports - Finished Products (Million Tonnes),State,16
+2009,Trade Imports - Finished Products (Million Tonnes),State,14.3
+2010,Trade Imports - Finished Products (Million Tonnes),State,14.6
+2011,Trade Imports - Finished Products (Million Tonnes),State,14
+2012,Trade Imports - Finished Products (Million Tonnes),State,13.7
+2013,Trade Imports - Finished Products (Million Tonnes),State,13.6
+2014,Trade Imports - Finished Products (Million Tonnes),State,14.5
+2015,Trade Imports - Finished Products (Million Tonnes),State,15.2
+2000,Trade Exports (Million Tonnes),State,13.5
+2001,Trade Exports (Million Tonnes),State,12.8
+2002,Trade Exports (Million Tonnes),State,13.6
+2003,Trade Exports (Million Tonnes),State,12.5
+2004,Trade Exports (Million Tonnes),State,14.2
+2005,Trade Exports (Million Tonnes),State,14.2
+2006,Trade Exports (Million Tonnes),State,14.7
+2007,Trade Exports (Million Tonnes),State,14.7
+2008,Trade Exports (Million Tonnes),State,14.9
+2009,Trade Exports (Million Tonnes),State,13.2
+2010,Trade Exports (Million Tonnes),State,14.7
+2011,Trade Exports (Million Tonnes),State,15.7
+2012,Trade Exports (Million Tonnes),State,16.4
+2013,Trade Exports (Million Tonnes),State,15.7
+2014,Trade Exports (Million Tonnes),State,16.7
+2015,Trade Exports (Million Tonnes),State,18.5
+2000,Trade Exports - Raw Products (Million Tonnes),State,1.8
+2001,Trade Exports - Raw Products (Million Tonnes),State,2.3
+2002,Trade Exports - Raw Products (Million Tonnes),State,2.5
+2003,Trade Exports - Raw Products (Million Tonnes),State,2.5
+2004,Trade Exports - Raw Products (Million Tonnes),State,2.2
+2005,Trade Exports - Raw Products (Million Tonnes),State,2.6
+2006,Trade Exports - Raw Products (Million Tonnes),State,3
+2007,Trade Exports - Raw Products (Million Tonnes),State,2.3
+2008,Trade Exports - Raw Products (Million Tonnes),State,2.1
+2009,Trade Exports - Raw Products (Million Tonnes),State,2
+2010,Trade Exports - Raw Products (Million Tonnes),State,2.1
+2011,Trade Exports - Raw Products (Million Tonnes),State,2.5
+2012,Trade Exports - Raw Products (Million Tonnes),State,2.4
+2013,Trade Exports - Raw Products (Million Tonnes),State,2.4
+2014,Trade Exports - Raw Products (Million Tonnes),State,2.4
+2015,Trade Exports - Raw Products (Million Tonnes),State,3
+2000,Trade Exports - Semi Manufacturing Products (Million Tonnes),State,5.8
+2001,Trade Exports - Semi Manufacturing Products (Million Tonnes),State,5
+2002,Trade Exports - Semi Manufacturing Products (Million Tonnes),State,5.2
+2003,Trade Exports - Semi Manufacturing Products (Million Tonnes),State,4.6
+2004,Trade Exports - Semi Manufacturing Products (Million Tonnes),State,5
+2005,Trade Exports - Semi Manufacturing Products (Million Tonnes),State,4.8
+2006,Trade Exports - Semi Manufacturing Products (Million Tonnes),State,5
+2007,Trade Exports - Semi Manufacturing Products (Million Tonnes),State,5.4
+2008,Trade Exports - Semi Manufacturing Products (Million Tonnes),State,5.4
+2009,Trade Exports - Semi Manufacturing Products (Million Tonnes),State,4.4
+2010,Trade Exports - Semi Manufacturing Products (Million Tonnes),State,5.1
+2011,Trade Exports - Semi Manufacturing Products (Million Tonnes),State,5.5
+2012,Trade Exports - Semi Manufacturing Products (Million Tonnes),State,5.7
+2013,Trade Exports - Semi Manufacturing Products (Million Tonnes),State,5.9
+2014,Trade Exports - Semi Manufacturing Products (Million Tonnes),State,6.5
+2015,Trade Exports - Semi Manufacturing Products (Million Tonnes),State,7
+2000,Trade Exports - Finished Products (Million Tonnes),State,5.8
+2001,Trade Exports - Finished Products (Million Tonnes),State,5.6
+2002,Trade Exports - Finished Products (Million Tonnes),State,6
+2003,Trade Exports - Finished Products (Million Tonnes),State,5.4
+2004,Trade Exports - Finished Products (Million Tonnes),State,7
+2005,Trade Exports - Finished Products (Million Tonnes),State,6.8
+2006,Trade Exports - Finished Products (Million Tonnes),State,6.7
+2007,Trade Exports - Finished Products (Million Tonnes),State,7
+2008,Trade Exports - Finished Products (Million Tonnes),State,7.3
+2009,Trade Exports - Finished Products (Million Tonnes),State,6.8
+2010,Trade Exports - Finished Products (Million Tonnes),State,7.4
+2011,Trade Exports - Finished Products (Million Tonnes),State,7.8
+2012,Trade Exports - Finished Products (Million Tonnes),State,8.2
+2013,Trade Exports - Finished Products (Million Tonnes),State,7.3
+2014,Trade Exports - Finished Products (Million Tonnes),State,7.8
+2015,Trade Exports - Finished Products (Million Tonnes),State,8.5

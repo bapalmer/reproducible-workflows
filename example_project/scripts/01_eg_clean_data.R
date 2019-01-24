@@ -10,7 +10,7 @@
 # Section 1: Load the data ----
 # This data frame has 2 lines of meta data that must be skipped over
 who_tb_data <- read_csv("data/raw_data/who_tb_data.csv",
-                        skip = 2)%>%
+                        skip = 2) %>%
   
   gather(new_ep_f014:new_sp_m65, # columns to be collapsed
          key = "key", 
@@ -30,6 +30,21 @@ who_tb_data <- read_csv("data/raw_data/who_tb_data.csv",
   spread(sex, cases) %>% # Places males and females in separate columns
   
   mutate(total = m + f)
+
+who_tb_data <- who_tb_data %>%
+  
+  mutate(country = factor(country),
+         age = factor(age),
+         type = factor(type)) %>%
+  
+  #Change/clarify the factor levels for age
+  mutate(age = recode_factor(who_tb_data$age, `014` = "0-14", 
+                             `1524` = "15-24", 
+                             `2534` = "25-34",
+                             `3544` = "35-44",
+                             `4554` = "45-54",
+                             `5564` = "55-64",
+                             `65` = "65+"))
 
 # write_csv(who_tb_data,
 #           paste("data/",Sys.Date(),"_clean_who_tb_data.csv",

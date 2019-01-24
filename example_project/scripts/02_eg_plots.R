@@ -18,7 +18,8 @@ who_ire <- who_tb_data %>%
 ggplot() +
   geom_bar(mapping = aes(x = year, y = total, fill = age),
            stat = "identity") +
-  labs(title = "Summary overview of TB cases in Ireland")
+  labs(title = "Summary overview of TB cases in Ireland", 
+       x = "Year", y = "Total number of cases", fill = "Age group")
 
 # End of project ----
 # 2007 looked like a bad year
@@ -26,7 +27,7 @@ ggplot() +
 # What is the breakdown for the type of TB in the youngest cohort?
 who_ire_v2 <- who_tb_data %>%
   
-  filter(age == "014" & country == "Ireland") %>% #Feed this data directly to ggplot
+  filter(age == "014" & country == "Ireland") %>% # Feed this data directly to ggplot
   
   # Layered plot
   ggplot() +

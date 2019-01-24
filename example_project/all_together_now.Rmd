@@ -1,15 +1,17 @@
 ---
-title: "All together now"
-author: "Your name"
-date: "2018-10-30"
+title: "This is a reproducible document"
+author: "Dr. Brendan Palmer"
+date: '4th December 2018'
 output:
-  word_document: default
-
+   word_document: default
 ---
 
 # This is the beginning of the project
 
 ## Data overview
+
+The plot below is created directly from the code I wrote in the scripts
+
 ```{r packages and setup, include = FALSE}
 
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, 
@@ -31,13 +33,32 @@ library(tidyverse)
 
 source("scripts/02_eg_plots.R")
 
-# The location of the Rmd file dictates whether the path to other files is successful
+# The location of the Rmd file dictates whether the path to other files is intact
 who_ire
 ```
 
-```{r Analysis, include = FALSE}
+This table summarises the TB data for four countries with similar population sizes.
 
+```{r Analysis, echo = FALSE}
+library(knitr)
 source("scripts/03_eg_analysis.R")
+```
 
+```{r, echo=FALSE}
+# Country comparison for 0-14 year old cohort ----
+ctry_comp <- who_tb_data %>% 
+  filter(age == "0-14") %>%
+  group_by(country, year) %>%
+  summarise(most = sum(total)) %>%
+  filter(country %in% c("Ireland", "New Zealand", "Costa Rica", "Norway")) %>% 
+  arrange(desc(most))
+
+# Summary of information by country
+table_of_info <- ctry_comp %>% 
+  group_by(country) %>%
+  summarise(Mean = round(mean(most, na.rm = TRUE), digits = 2),
+            SD = round(sd(most, na.rm = TRUE), digits = 2))
+
+kable(table_of_info, caption = "Table 1. Summary of TB cases in four countries")
 ```
 

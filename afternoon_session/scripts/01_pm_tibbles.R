@@ -1,8 +1,8 @@
 #########################################################################
 # 1-day R workshop 
-# Morning practical session A
-# 30th October 2018
-# 01_am_tibbles.R
+# Afternoon practical session A
+# 9th February 2019
+# 01_pm_tibbles.R
 #########################################################################
 # Load the tidyverse
 library(tidyverse)
