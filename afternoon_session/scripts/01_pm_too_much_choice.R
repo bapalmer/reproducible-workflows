@@ -1,8 +1,8 @@
 #########################################################################
 # 1-day R workshop 
-# Morning practical session A
-# 9th February 2019
-# 01_am_too_much_choice.R
+# Afternoon practical session A
+# 30th October 2018
+# 01_pm_too_much_choice.R
 #########################################################################
 # There are many, many ways to do the same thing in R
 # Run the code below for some examples

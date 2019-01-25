@@ -1,8 +1,8 @@
 #########################################################################
 # 1-day R workshop 
-# Morning practical session A
-# 9th February 2019
-# 02_am_good_habits.R
+#Afternoon practical session A
+# 30th October 2018
+# 02_pm_good_habits.R
 #########################################################################
 # 1. This file is already machine readable, but it needs to be human readable too
 # Will you remember what you did in 6 months time?

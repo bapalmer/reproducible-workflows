@@ -1,11 +1,11 @@
 #########################################################################
 # 1-day R workshop 
-# Morning practical session A
-# 9th February 2019
-# 04_am_plots.R
+# Afternoon practical session C
+# 30th October 2018
+# 04_pm_plots.R
 #########################################################################
 # Read in the clean WHO TB data
-source("morning_session/scripts/03_am_clean_data.R")
+source("afternoon_session/scripts/03_pm_clean_data.R")
 
 # Irish data preliminary plot ----
 # Pick any question you'd like to ask of the data

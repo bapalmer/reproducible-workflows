@@ -92,8 +92,7 @@ leu1 <- leu1 %>%
 
 leu1 <- leu1 %>%
   
-  mutate(total = growth_rate * expression,
-         browse()) # Colin Fay tweet 23rd Jan 2019
+  mutate(total = growth_rate * expression)
 
 # 8. group_by() allows actions to be performed by group
 leu1_gp <- leu1 %>%

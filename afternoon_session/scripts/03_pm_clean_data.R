@@ -1,15 +1,15 @@
 #########################################################################
 # 1-day R workshop 
-# Morning practical session A
-# 9th February 2019
-# 03_am_clean_data.R
+# Afternoon practical session A
+# 30th October 2018
+# 03_pm_clean_data.R
 #########################################################################
 # Load the required packages
 # library(tidyverse)
 
 # Section 1: Load the data ----
 # This data frame has 2 lines of meta data that must be skipped over
-who_tb_data <- read_csv("morning_session/data/raw_data/who_tb_data.csv",
+who_tb_data <- read_csv("afternoon_session/data/raw_data/who_tb_data.csv",
                         skip = 2)%>%
   
   gather(new_ep_f014:new_sp_m65, # columns to be collapsed
@@ -32,6 +32,6 @@ who_tb_data <- read_csv("morning_session/data/raw_data/who_tb_data.csv",
   mutate(total = m + f)
 
 # write_csv(who_tb_data,
-#           paste("morning_session/data/",Sys.Date(),"_clean_who_tb_data.csv",
+#           paste("afternoon_session/data/",Sys.Date(),"_clean_who_tb_data.csv",
 #                 sep=""))
 # This is commented out, but if it is used, the date stamp is too

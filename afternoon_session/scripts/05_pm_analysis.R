@@ -1,11 +1,11 @@
 #########################################################################
 # 1-day R workshop 
-# Morning practical session A
-# 9th February 2019
-# 05_am_analysis.R
+# Morning practical session C
+# 30th October 2018
+# 05_pm_analysis.R
 #########################################################################
 # Read in the clean WHO TB data
-source("morning_session/scripts/03_am_clean_data.R")
+source("afternoon_session/scripts/03_pm_clean_data.R")
 
 # Country comparison for 0-14 year old cohort ----
 ctry_comp <- who_tb_data %>% # Lets compare TB cases in the youngest
@@ -32,5 +32,5 @@ table_of_info <- ctry_comp %>%
 # Once the analysis is complete, you might want to capture your environment
 # It can be recreated anytime you run this script
 writeLines(capture.output(sessionInfo()), 
-           paste("morning_session/docs/",Sys.Date(),"_end_of_project_session_info.txt",
+           paste("afternoon_session/docs/",Sys.Date(),"_end_of_project_session_info.txt",
                  sep = ""))
